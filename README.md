@@ -5,3 +5,4 @@ D32A
 - Rani Indrianna Sembiring - 201511025
 - Salsabila Putri Prameswari - 201511029
 - Muhammad Daffa Aushaf - 201511017
+- Diwan Purnama - 201511007
