@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
-import DropdownRole from "../DropdownRole";
-import Mahasiswa from "../Mahasiswa";
+import DropdownRole from "../DropdownRole/DropdownRole";
+import Mahasiswa from "./Mahasiswa";
 import axios from "axios";
+import "./Home.css";
 import { Table } from "react-bootstrap";
 
 class Home extends Component {
@@ -16,20 +17,13 @@ class Home extends Component {
   getDataAPI = () => {
     axios
       .get(
-        `http://localhost:1337/api/roles-mahasiswas/${this.state.role}?fields=tugas&populate=mahasiswas`
+        `http://localhost:1337/api/tugases/${this.state.role}?fields=nama&populate=mahasiswas`
       )
       .then((res) => {
         this.setState({
           mahasiswa: res.data.data.attributes.mahasiswas.data,
         });
       });
-    // fetch(`https://jsonplaceholder.typicode.com/users/${this.state.role}`)
-    // .then(response =>response.json)
-    // .then(json =>{
-    //     this.setState({
-    //         post:json
-    //     })
-    // })
   };
 
   handleCounterChange = (newvalue) => {
@@ -60,22 +54,23 @@ class Home extends Component {
   }
   render() {
     return (
-      <div>
-        <div>
+      <div className="Home-css">
+        <div className="dropdown">
           <DropdownRole
             onCounterChange={(value) => this.handleCounterChange(value)}
           />
         </div>
-        <Fragment>
-          <Table striped bordered hover variant="dark">
+        {/* <Fragment> */}
+        <form>
+          <table >
             <thead>
                 <tr>
-                <th>NIM</th>
-                <th>Nama</th>
-                <th>Umur</th>
+                  <th>NIM</th>
+                  <th>Nama</th>
+                  <th>Umur</th>
                 </tr>
             </thead>
-          
+          <tbody>
           {this.state.mahasiswa.map((maha) => {
             return (
               <Mahasiswa
@@ -86,8 +81,10 @@ class Home extends Component {
               />
             );
           })}
-          </Table>
-        </Fragment>
+          </tbody>
+          </table>
+          </form>
+        {/* </Fragment> */}
       </div>
     );
   }
