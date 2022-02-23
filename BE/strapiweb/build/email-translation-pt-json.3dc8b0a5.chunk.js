@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstrapiweb=self.webpackChunkstrapiweb||[]).push([[3166],{18210:e=>{e.exports={}}}]);
