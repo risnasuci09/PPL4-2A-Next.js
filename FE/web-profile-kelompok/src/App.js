@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Hasil, ListRoles, NavbarComponent } from './components';
+import { Hasil, ListRoles, Mahasiswas, NavbarComponent } from './components';
 import { API_URL } from './utils/constants';
 import axios from 'axios';
 
@@ -10,37 +10,61 @@ export default class App extends Component {
   
     this.state = {
       mahasiswas: [],
+      pilihRole: 1
     }
   }
 
   componentDidMount() {
     axios
-      .get(API_URL+"api/mahasiswas")
+      .get(API_URL+"api/role-proyeks/"+this.state.pilihRole+"?populate[mahasiswas][populate]=role_proyek")
       .then(res => {
-        const mahasiswas = res.data;
+        console.log("Data1 : ", res);
+        const mahasiswas = res.data.data.attributes.mahasiswas.data;
         this.setState({ mahasiswas });
       })
       .catch(error => {
-        console.log(error);
+        console.log("Error URL API...", error);
+      })
+  }
+
+  changeRole = (value) => {
+    this.setState({
+      pilihRole: value,
+      mahasiswas: []
+    })
+
+    axios
+      .get(API_URL+"api/role-proyeks/"+value+"?populate[mahasiswas][populate]=role_proyek")
+      .then(res => {
+        console.log("Data1 : ", res);
+        const mahasiswas = res.data.data.attributes.mahasiswas.data;
+        this.setState({ mahasiswas });
+      })
+      .catch(error => {
+        console.log("Error URL API...", error);
       })
   }
 
   render() {
-    console.log(this.state.mahasiswas);
+    console.log("Data : ", this.state.mahasiswas);
+    const { mahasiswas, pilihRole } = this.state
+
     return (
       <div className="App">
         <NavbarComponent/>
         <div className='mt-3'>
           <Container fluid>
             <Row>
-              <ListRoles />
+              <ListRoles changeRole={this.changeRole} pilihRole={pilihRole}/>
               <Col>
                 <h4><strong>Daftar Mahasiswa</strong></h4>
                 <hr />
                 <Row>
-                {mahasiswas && mahasiswas.map((mahasiswa) => (
-                <h2>{mahasiswa.nama}</h2>
-                ))}
+                  {mahasiswas && mahasiswas.map((mahasiswa) => (
+                    <Mahasiswas
+                      mahasiswa={mahasiswa}
+                    />
+                  ))}
                 </Row>
               </Col>
             </Row>
