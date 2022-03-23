@@ -6,4 +6,4 @@
 
 ### `3. npm i react-router-dom`
 
-### `3. npm i react-router-dom`
+### `4. npm install react-icons --save`
