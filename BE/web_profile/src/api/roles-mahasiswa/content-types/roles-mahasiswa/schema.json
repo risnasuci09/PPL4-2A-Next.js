@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "roles_mahasiswas",
+  "info": {
+    "singularName": "roles-mahasiswa",
+    "pluralName": "roles-mahasiswas",
+    "displayName": "roles-mahasiswa"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tugas": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "mahasiswas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mahasiswa.mahasiswa",
+      "mappedBy": "roles_mahasiswa"
+    }
+  }
+}

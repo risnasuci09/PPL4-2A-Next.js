@@ -1,0 +1,46 @@
+.Home-css {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    align-items: 'center'
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #ffffff;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ffffff;
+    text-align: center;
+    padding: 8px;
+    font-size: 32px;
+  }
+  
+  th {
+    background-color: rgb(0, 30, 48);
+  }
+  
+  td {
+    background-color: rgb(8, 55, 83);
+  }
+  
+  form {
+    display: flex;
+    gap: 5px;
+  }
+  
+  form td:last-child {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  form * {
+    font-size: 28px;
+  }
+.dropdown{
+    margin: auto;
+}
