@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "units",
+  "info": {
+    "singularName": "unit",
+    "pluralName": "units",
+    "displayName": "unit",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama_unit": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "alamat_unit": {
+      "type": "text",
+      "required": false
+    },
+    "direktorats": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::direktorat.direktorat",
+      "mappedBy": "unit"
+    },
+    "jabatans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::jabatan.jabatan",
+      "mappedBy": "unit"
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "unit"
+    },
+    "proyeksis": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::proyeksi.proyeksi",
+      "mappedBy": "unit"
+    }
+  }
+}
