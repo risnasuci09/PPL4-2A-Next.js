@@ -1,9 +1,11 @@
-import React from 'react';
-import { Navbar,Container } from "react-bootstrap";
-import "./Nav.css"
+import React, { useState } from 'react';
+import { Navbar,Container,Button } from "react-bootstrap";
+import "./Nav.css";
+import * as AiIcons from 'react-icons/ai';
 // import logo from "./logo.svg";
 
-function Nav() {
+function Nav(props) {
+  const [navShow,setNavShow] = useState(true);
   return (
     <div className='navbar'>
         

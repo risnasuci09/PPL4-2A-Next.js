@@ -19,13 +19,12 @@ import PenilaianWawancara from "./component/FitProper/PenilaianWawancara";
 
 
 function App() {
-
+  const [leftActive,setLeftActive] = useState(false);
   return (
     <>
-      <Nav/>
-      <SideNav/>
-
-      <div class="main">
+      
+      <SideNav onLeft={leftActive} onSide={()=>setLeftActive(!leftActive)}/>
+      <div class={leftActive?"main active":"main"}>
         <Router>
       <Routes>
           <Route path='/' exact element={<Dash/>} />
