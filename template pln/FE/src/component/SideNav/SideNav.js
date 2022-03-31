@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import Logo from "../../images/plnLogo.png";
-import { Collapse } from "react-bootstrap";
+import { Collapse,Button } from "react-bootstrap";
 import "./SideNav.css";
 import * as AiIcons from 'react-icons/ai';
 import * as MdIcons from 'react-icons/md';
 import * as FaIcons from 'react-icons/fa';
+// import Nav from "../Nav/Nav";
 // import { Button,Collapse } from "bootstrap";
 
-function SideNav() {
+function SideNav(props) {
+  // const [sidebar, setSidebar] = useState(false);
   const [openMaster, setOpenMaster] = useState(false);
   const [openFitProper, setOpenFitProper] = useState(false);
   const [openReport, setOpenReport] = useState(false);
+ 
+
   return (
-    <div className="sidenav">
+    <>
+    <div className={props.onLeft?"navbar":"navbar active"}>
+        <Button className="btn-secondary" onClick={props.onSide}>
+        <AiIcons.AiOutlineMenu/>
+        </Button>
+    </div>
+    <div className={props.onLeft?"sidenav":"sidenav active"}>
       <div className="title">
-        <img alt="" src={Logo} width="40" height="50" />
+        <img  alt="" src={Logo} width="40" height="50" />
         <h2>FP TLN</h2>
       </div>
       <div className="kolom">
@@ -118,7 +128,7 @@ function SideNav() {
       </div>
       
       
-    </div>
+    </div></>
   );
 }
 

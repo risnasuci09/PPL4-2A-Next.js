@@ -37,17 +37,17 @@
 
 
 .main {
-  margin-left: 260px; /* Same as the width of the sidenav */
+  margin-left: 4%; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
   margin-top: 20px;
+  /* color: blue; */
+  transition: 450ms;
+  margin-right: 60px;
+}
+.main.active{
+  margin-left: 20%;
+  transition: 450ms;
+  /* color: rebeccapurple; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

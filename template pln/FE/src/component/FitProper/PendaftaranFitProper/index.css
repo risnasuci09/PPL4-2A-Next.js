@@ -1,0 +1,67 @@
+.Card{
+    width: 100%;
+}
+
+
+
+.form-inline {  
+    display: inline;
+    flex-flow: row wrap;
+    align-items: center;
+    /* align-self: flex-end; */
+  }
+  
+  .form-inline label {
+    margin:5px 10px 5px 0;
+  }
+  
+  .form-inline input {
+    vertical-align: middle;
+    /* width: 50%; */
+    margin: 5px 10px 10px 10px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  .form-inline button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .form-inline button:hover {
+    background-color: royalblue;
+  }
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 15px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* @media (max-width: 800px) {
+    .form-inline input {
+      margin: 10px 0;
+    }
+    
+    .form-inline {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  } */
+ 
