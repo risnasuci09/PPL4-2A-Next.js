@@ -4,64 +4,79 @@
 
 
 
-.form-inline {  
-    display: inline;
-    flex-flow: row wrap;
-    align-items: center;
-    /* align-self: flex-end; */
-  }
-  
-  .form-inline label {
-    margin:5px 10px 5px 0;
-  }
-  
-  .form-inline input {
-    vertical-align: middle;
-    /* width: 50%; */
-    margin: 5px 10px 10px 10px;
-    padding: 5px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-  }
-  
-  .form-inline button {
-    padding: 10px 20px;
-    background-color: dodgerblue;
-    border: 1px solid #ddd;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .form-inline button:hover {
-    background-color: royalblue;
-  }
-  .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 15px;
-  }
-  
-  .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+* {
+  box-sizing: border-box;
+  font-size: medium;
+}
 
-  /* @media (max-width: 800px) {
-    .form-inline input {
-      margin: 10px 0;
-    }
-    
-    .form-inline {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  } */
- 
+input[type=text], select,input[type=date] {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* color: #0452aa; */
+  
+}
+
+input:disabled{
+  background-color: #cccccc;
+}
+
+input:disabled::placeholder{
+  color: rgb(7, 7, 7);
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #0452aa;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+  width: 50%;
+}
+
+input[type=submit]:hover {
+  background-color: #458ea0;
+}
+
+.container.head{
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #dbdbdb;
+  /* height: 12px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.container.body {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 2px;
+}
+.container{
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.titleForm{
+  /* color: #04AA6D; */
+  font-weight: bold;
+  /* background-color: aqua; */
+  /* z-index: 2; */
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
