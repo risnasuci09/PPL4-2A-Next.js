@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "group_profiles",
+  "info": {
+    "singularName": "group-profile",
+    "pluralName": "group-profiles",
+    "displayName": "GroupProfile",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nama": {
+      "type": "string"
+    },
+    "NIM": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true,
+      "max": "10"
+    },
+    "Email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "Birthday": {
+      "type": "date",
+      "required": true
+    },
+    "Picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "Name": {
+      "displayName": "Profile",
+      "type": "component",
+      "repeatable": false,
+      "component": "group-information.profile"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
