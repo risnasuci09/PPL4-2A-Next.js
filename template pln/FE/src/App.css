@@ -44,10 +44,17 @@
   /* color: blue; */
   transition: 450ms;
   margin-right: 60px;
+  /* background-color: #E5E5E5; */
 }
 .main.active{
   margin-left: 20%;
   transition: 450ms;
   /* color: rebeccapurple; */
 }
-
+.container1{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* display: flex; */
+  background-color: #E5E5E5;
+}

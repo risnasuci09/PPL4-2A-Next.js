@@ -6,7 +6,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import SideNav from "./component/SideNav/SideNav";
-import Nav from "./component/Nav/Nav";
+// import Nav from "./component/Nav/Nav";
 import Dash from "./component/Dashboard";
 import DataPenguji from "./component/Master/DataPenguji";
 import DataPeserta from "./component/Master/DataPeserta";
@@ -15,29 +15,44 @@ import PendaftaranWawancara from "./component/FitProper/PendaftaranWawancara";
 import PenilaianFitProper from "./component/FitProper/PenilaianFitProper";
 import PenilaianWawancara from "./component/FitProper/PenilaianWawancara";
 
-
-
-
 function App() {
-  const [leftActive,setLeftActive] = useState(false);
+  const [leftActive, setLeftActive] = useState(false);
   return (
     <>
       
-      <SideNav onLeft={leftActive} onSide={()=>setLeftActive(!leftActive)}/>
-      <div class={leftActive?"main active":"main"}>
-        <Router>
-      <Routes>
-          <Route path='/' exact element={<Dash/>} />
-          <Route path='/master/data-peserta' element={<DataPeserta/>} />
-          <Route path='/master/data-penguji' element={<DataPenguji/>} />
-          <Route path='/fit-proper/pendaftaran-fit-proper' element={<PendaftaranFitProper/>} />
-          <Route path='/fit-proper/pendaftaran-wawancara' element={<PendaftaranWawancara/>} />
-          <Route path='/fit-proper/penilaian-wawancara' element={<PenilaianWawancara/>} />
-          <Route path='/fit-proper/penilaian-fit-proper' element={<PenilaianFitProper/>} />
-        </Routes>
-      </Router>
+      <div>
+        <SideNav
+          onLeft={leftActive}
+          onSide={() => setLeftActive(!leftActive)}
+        />
+        <div className="container1">
+        <div class={leftActive ? "main active" : "main"}>
+          
+          <Router>
+            <Routes>
+              <Route path="/" exact element={<Dash />} />
+              <Route path="/master/data-peserta" element={<DataPeserta />} />
+              <Route path="/master/data-penguji" element={<DataPenguji />} />
+              <Route
+                path="/fit-proper/pendaftaran-fit-proper"
+                element={<PendaftaranFitProper />}
+              />
+              <Route
+                path="/fit-proper/pendaftaran-wawancara"
+                element={<PendaftaranWawancara />}
+              />
+              <Route
+                path="/fit-proper/penilaian-wawancara"
+                element={<PenilaianWawancara />}
+              />
+              <Route
+                path="/fit-proper/penilaian-fit-proper"
+                element={<PenilaianFitProper />}
+              />
+            </Routes>
+          </Router>
+        </div></div>
       </div>
-      
     </>
   );
 }
