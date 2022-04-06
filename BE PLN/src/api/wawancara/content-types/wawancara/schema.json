@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wawancaras",
+  "info": {
+    "singularName": "wawancara",
+    "pluralName": "wawancaras",
+    "displayName": "wawancara",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jadwal_wawancara": {
+      "type": "date"
+    },
+    "nilai_wawancara": {
+      "type": "integer"
+    },
+    "pesertas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::peserta.peserta",
+      "mappedBy": "wawancara"
+    },
+    "pengujis": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::penguji.penguji",
+      "inversedBy": "wawancaras"
+    },
+    "proyeksi_jabatan_wawancara": {
+      "type": "string"
+    },
+    "jenjang_jabatan_wawancara": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pengujis",
+  "info": {
+    "singularName": "penguji",
+    "pluralName": "pengujis",
+    "displayName": "Penguji"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "penguji"
+    },
+    "fit_propers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::fit-proper.fit-proper",
+      "mappedBy": "pengujis"
+    },
+    "wawancaras": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wawancara.wawancara",
+      "mappedBy": "pengujis"
+    }
+  }
+}

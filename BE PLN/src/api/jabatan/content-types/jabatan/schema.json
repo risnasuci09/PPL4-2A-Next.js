@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jabatans",
+  "info": {
+    "singularName": "jabatan",
+    "pluralName": "jabatans",
+    "displayName": "Gender",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jenis_kelamin": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "gender"
+    }
+  }
+}

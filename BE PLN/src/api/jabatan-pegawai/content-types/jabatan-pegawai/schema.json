@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jabatan_pegawais",
+  "info": {
+    "singularName": "jabatan-pegawai",
+    "pluralName": "jabatan-pegawais",
+    "displayName": "jabatan_pegawai",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama_jabatan": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "jabatan_pegawai"
+    },
+    "proyeksis": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::proyeksi.proyeksi",
+      "mappedBy": "jabatan_pegawai"
+    },
+    "jenjang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenjang.jenjang",
+      "inversedBy": "jabatan_pegawais"
+    },
+    "unit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "jabatan_pegawais"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pegawais",
+  "info": {
+    "singularName": "pegawai",
+    "pluralName": "pegawais",
+    "displayName": "pegawai",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nip": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "nama_pegawai": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "tempat_lahir": {
+      "type": "string"
+    },
+    "tgl_lahir": {
+      "type": "date"
+    },
+    "no_hp": {
+      "type": "string"
+    },
+    "alamat": {
+      "type": "string"
+    },
+    "peserta": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::peserta.peserta",
+      "inversedBy": "pegawais"
+    },
+    "penguji": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::penguji.penguji",
+      "inversedBy": "pegawais"
+    },
+    "jabatan_pegawai": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jabatan-pegawai.jabatan-pegawai",
+      "inversedBy": "pegawais"
+    },
+    "gender": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jabatan.jabatan",
+      "inversedBy": "pegawais"
+    },
+    "religion": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::religion.religion",
+      "inversedBy": "pegawais"
+    },
+    "grade": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grade.grade",
+      "inversedBy": "pegawais"
+    },
+    "jenjang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenjang.jenjang",
+      "inversedBy": "pegawais"
+    },
+    "unit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "pegawais"
+    },
+    "pendidikan": {
+      "type": "string"
+    },
+    "bidang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bidang.bidang",
+      "inversedBy": "pegawais"
+    },
+    "subbidang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subbidang.subbidang",
+      "inversedBy": "pegawais"
+    },
+    "divisi": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::divisi.divisi",
+      "inversedBy": "pegawais"
+    },
+    "direktorat": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::direktorat.direktorat",
+      "inversedBy": "pegawais"
+    }
+  }
+}

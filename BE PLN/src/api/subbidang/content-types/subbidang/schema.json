@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subbidangs",
+  "info": {
+    "singularName": "subbidang",
+    "pluralName": "subbidangs",
+    "displayName": "Subbidang",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama_subbidang": {
+      "type": "string",
+      "unique": true
+    },
+    "bidang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bidang.bidang",
+      "inversedBy": "subbidangs"
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "subbidang"
+    }
+  }
+}
