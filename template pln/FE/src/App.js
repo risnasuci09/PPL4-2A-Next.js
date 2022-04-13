@@ -10,8 +10,8 @@ import SideNav from "./component/SideNav/SideNav";
 import Dash from "./component/Dashboard";
 import DataPenguji from "./component/Master/DataPenguji";
 import DataPeserta from "./component/Master/DataPeserta";
-import PendaftaranFitProper from "./component/FitProper/PendaftaranFitProper";
-import PendaftaranWawancara from "./component/FitProper/PendaftaranWawancara";
+import PendaftaranFitProper from "./component/FitProper/PendaftaranFitProper/index";
+import PendaftaranWawancara from "./component/FitProper/PendaftaranWawancara/index";
 import PenilaianFitProper from "./component/FitProper/PenilaianFitProper";
 import PenilaianWawancara from "./component/FitProper/PenilaianWawancara";
 
@@ -26,7 +26,7 @@ function App() {
           onSide={() => setLeftActive(!leftActive)}
         />
         <div className="container1">
-        <div class={leftActive ? "main active" : "main"}>
+        <div className={leftActive ? "main active" : "main"}>
           
           <Router>
             <Routes>
