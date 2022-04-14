@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nilai_wawancaras",
+  "info": {
+    "singularName": "nilai-wawancara",
+    "pluralName": "nilai-wawancaras",
+    "displayName": "nilai_wawancara"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "total_nilai_wawancara": {
+      "type": "integer"
+    },
+    "wawancara": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wawancara.wawancara",
+      "inversedBy": "nilai_wawancara"
+    }
+  }
+}

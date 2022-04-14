@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nilai_fit_propers",
+  "info": {
+    "singularName": "nilai-fit-proper",
+    "pluralName": "nilai-fit-propers",
+    "displayName": "nilai_fit_proper",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "total_nilai_fit_proper": {
+      "type": "integer"
+    },
+    "fit_proper": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::fit-proper.fit-proper",
+      "inversedBy": "nilai_fit_proper"
+    },
+    "nilai_key_competency": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nilai-key-competency.nilai-key-competency",
+      "inversedBy": "nilai_fit_proper"
+    },
+    "nilai_personal_endurance": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nilai-personal-endurance.nilai-personal-endurance",
+      "inversedBy": "nilai_fit_proper"
+    },
+    "nilai_proyeksi_jabatan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nilai-proyeksi-jabatan.nilai-proyeksi-jabatan",
+      "inversedBy": "nilai_fit_proper"
+    }
+  }
+}
