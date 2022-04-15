@@ -11,7 +11,6 @@ function Index() {
   const [jabatan, setJabatan] = useState("");
   const [grade, setGrade] = useState("");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
   const [proyeksi, setProyeksi] = useState("");
   const [id, setId] = useState("");
   const [selectJenjang, setSelectJenjang] = useState([]);
@@ -21,11 +20,10 @@ function Index() {
   const postData = () => {
     const data = {
       proyeksi_jabatan_fit_proper: proyeksi,
-      date: date,
-      time: time,
+      jadwal: date,
       peserta: id,
       jenis_fit_proper: jenisFitProper,
-      jenjang:jabatan
+      jenjang_jabatan_fit_proper:jabatan
     };
     axios
       .post(`http://localhost:1337/api/fit-propers`, { data })
@@ -34,7 +32,7 @@ function Index() {
         successNotify();
       })
       .catch((err) => {
-        console.log("fail");
+        console.log("fail",err);
         errorNotify();
       });
   };
@@ -96,7 +94,7 @@ function Index() {
                               progress: undefined,
                               });
 
-  const errorNotify = () =>toast.error('🦄 Wow so easy!', {
+  const errorNotify = () =>toast.error('error', {
                             position: "top-right",
                             autoClose: 5000,
                             hideProgressBar: false,
@@ -199,7 +197,7 @@ function Index() {
           </Col>
           <Col md={{ span: 7 }}>
             <input
-              type="date"
+              type="datetime-local"
               id="date"
               name="date"
               placeholder="Date"
@@ -207,7 +205,7 @@ function Index() {
             />
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col md={{ span: 2 }} className="d-flex justify-content-end">
             <label htmlFor="time">Time</label>
           </Col>
@@ -219,7 +217,7 @@ function Index() {
               onChange={(e) => setTime(e.target.value + ":00")}
             />
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col md={{ span: 2 }} className="d-flex justify-content-end">
             <label htmlFor="proyeksi">Proyeksi</label>
