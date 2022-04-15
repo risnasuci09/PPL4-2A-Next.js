@@ -43,8 +43,7 @@ function index() {
               <td>{student.email}</td>
             </tr>
             </>
-        }
-        )}
+        })}
       </table>
     </div>
   );

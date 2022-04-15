@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "./index.css";
@@ -86,7 +86,7 @@ function Index() {
       });
   };
 
-  const successNotify = () =>toast.success('🦄 Wow so easy!', {
+  const successNotify = () =>toast.success('berhasil!', {
                               position: "top-right",
                               autoClose: 5000,
                               hideProgressBar: false,
@@ -116,7 +116,7 @@ function Index() {
     console.log(proyeksi);
     // console.log("select", selectJenjang);
     console.groupEnd();
-    if (selectJenjang.length == 0) {
+    if (selectJenjang.length === 0) {
       console.log("getjenjang");
       getJenjangJabatan();
     }
@@ -317,7 +317,17 @@ function Index() {
         </Row>
         {/* </form> */}
       </div>
-      <ToastContainer/>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
     </div>
   );
 }

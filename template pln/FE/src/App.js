@@ -14,6 +14,7 @@ import PendaftaranFitProper from "./component/FitProper/PendaftaranFitProper/ind
 import PendaftaranWawancara from "./component/FitProper/PendaftaranWawancara/index";
 import PenilaianFitProper from "./component/FitProper/PenilaianFitProper";
 import PenilaianWawancara from "./component/FitProper/PenilaianWawancara";
+import JadwalFitProper from "./component/FitProper/JadwalFitProper/Index";
 
 function App() {
   const [leftActive, setLeftActive] = useState(false);
@@ -31,24 +32,30 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" exact element={<Dash />} />
-              <Route path="/master/data-peserta" element={<DataPeserta />} />
-              <Route path="/master/data-penguji" element={<DataPenguji />} />
-              <Route
-                path="/fit-proper/pendaftaran-fit-proper"
-                element={<PendaftaranFitProper />}
-              />
-              <Route
-                path="/fit-proper/pendaftaran-wawancara"
-                element={<PendaftaranWawancara />}
-              />
-              <Route
-                path="/fit-proper/penilaian-wawancara"
-                element={<PenilaianWawancara />}
-              />
-              <Route
-                path="/fit-proper/penilaian-fit-proper"
-                element={<PenilaianFitProper />}
-              />
+              {/* Master */}
+                <Route path="/master/data-peserta" element={<DataPeserta />} />
+                <Route path="/master/data-penguji" element={<DataPenguji />} />
+              {/* Fit Proper */}
+                <Route
+                  path="/fit-proper/pendaftaran-fit-proper"
+                  element={<PendaftaranFitProper />}
+                />
+                <Route
+                  path="/fit-proper/pendaftaran-wawancara"
+                  element={<PendaftaranWawancara />}
+                />
+                <Route
+                  path="/fit-proper/penilaian-wawancara"
+                  element={<PenilaianWawancara />}
+                />
+                <Route
+                  path="/fit-proper/penilaian-fit-proper"
+                  element={<PenilaianFitProper />}
+                />
+                <Route
+                  path="/fit-proper/jadwal"
+                  element={<JadwalFitProper />}
+                />
             </Routes>
           </Router>
         </div></div>
