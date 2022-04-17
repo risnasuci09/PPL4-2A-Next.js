@@ -1,77 +1,77 @@
-import axios from 'axios';
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { AiOutlineDelete } from 'react-icons/ai';
+import { RiEditBoxLine } from 'react-icons/ri';
+import "./index.css";
+import axios from "axios";
 
-// export default class DataPenguji extends React.Component {
+export default function Index() {
 
-//   state = {
-//     penguji: [],
-//   };
+  const [Data, setData] = useState([]);
 
-//   handleGetData() {
-//     axios
-//       .get(`http://localhost:1337/api/pengujis?populate=pegawais`)
-//       .then((res) => {
-//         this.setState({
-//           penguji: res.data.data,
-//         });
-//         // console.log("res 1",res.data.data.attributes);
-//         // console.log("res 2",res.data.data[0].attributes.nama_pegawai);
-//       });
-//   }
+  const fetchData = () => {
+      axios
+       .get('http://localhost:1337/api/pengujis?populate=pegawai.jabatan&populate=pegawai.jenjang&populate=pegawai.grade')
+       .then((res) => {
+        console.log(res);
+        setData(res.data.data);
+      })
+  };
 
-//   componentDidMount() {
-//     this.handleGetData();
-//   }
+  useEffect(() => {
+    if (Data.length == 0) {
+      fetchData();
+    }
+   });
 
-//   testFunction = () => {
-    
-//     const itemPenguji = this.state.penguji[0];
-//     this.state.penguji.map((data)=>{
-//       console.group("penguji");
-//       console.log("id",data.id);
-//       console.log("attributes",data.attributes);
-//       console.log("nama_pegawai",data.attributes.pegawais.data.attributes.nama_pegawai);
-//       console.log("nip",data.attributes.pegawais.data.attributes.nip);
-//       // console.log("tugas",value.attributes.tugas.data.attributes.nama);
-//       console.groupEnd();
-//     })
-
-//   };
-
-//   render() {
-//     return ( 
-//     <div>
-//       {/* <table>
-//             <thead>
-//                 <tr>
-//                   <th>Nama</th> 
-//                   <th>NIP</th>
-//                 </tr>
-//             </thead>
-//           <tbody>
-//                 {
-//                   this.state.penguji.map((data)=>{
-//                     return 
-//                     <tr>
-//                       <th>{data.attributes.pegawais.data.attributes.nama_pegawai}</th>
-//                       <th>{data.attributes.pegawais.data.attributes.nip}</th>
-//                     </tr>
-//                   })
-//                 }
-//           </tbody>
-//       </table> */}
-//       hello
-//     </div>
-//     )
-//   }
-// }
-
-function index() {
-  return (
-    <div>
-        <h1>Ini Data Peserta</h1>
+   return (
+    <div className="container">
+      <div className="add">
+        <a href="data-penguji/add"><button class="btn btn-primary btn-sm">Tambah Data Penguji</button></a>
+          {/* <center><form>
+            <label>Nama yang dicari :</label>
+            <input type="text" name="cari"></input>
+            <input class="btn btn-primary btn-sm" type="submit" value="Cari"></input>
+          </form></center> */}
+      </div>
+      
+      <div className="utils">
+        <p></p>
+      </div>
+       
+      <table className="tabel">
+      <thead>
+       <tr>
+          <th>Nama</th>
+          <th>NIP</th>
+          <th>Jabatan</th>
+          <th>Grade</th>
+          <th>Jenjang</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+        
+      <tbody>
+        {Data.map((data, index) => {
+        console.log("test",data);
+        return<>
+          <tr data-index={index}>
+          {/* <td>test</td> */}
+          <td>{data.attributes.pegawai.data.attributes.nama_pegawai}</td>
+          <td>{data.attributes.pegawai.data.attributes.nip}</td>
+          <td>{data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</td>
+          <td>{data.attributes.pegawai.data.attributes.grade.data.attributes.kode_grade}</td>
+          <td>{data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</td>
+          <td className="aksi">
+                <AiOutlineDelete size="1.5em" fill="red" />
+                <RiEditBoxLine size="1.5em" fill="blue" />
+          </td>
+    </tr>
+    </>
+})}
+      </tbody>
+        
+      </table>
     </div>
-  )
+  );
 }
 
-export default index

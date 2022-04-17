@@ -4,9 +4,9 @@ module.exports = ({ env }) => ({
     connection: {
       host: env('DATABASE_HOST', '127.0.0.1'),
       port: env.int('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', 'pln'),
+      database: env('DATABASE_NAME', 'strapiweb'),
       user: env('DATABASE_USERNAME', 'postgres'),
-      password: env('DATABASE_PASSWORD', 'admin'),
+      password: env('DATABASE_PASSWORD', 'pass12'),
       ssl: env.bool('DATABASE_SSL', false),
     },
   },
