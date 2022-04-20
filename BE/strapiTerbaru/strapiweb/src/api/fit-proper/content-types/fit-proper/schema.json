@@ -17,15 +17,9 @@
       "required": true,
       "maxLength": 100
     },
-    "jadwal_fit_proper": {
+    "jadwal": {
       "type": "datetime",
       "required": true
-    },
-    "pengujis": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::penguji.penguji",
-      "inversedBy": "fit_propers"
     },
     "jenjang_jabatan_fit_proper": {
       "type": "string",
@@ -37,11 +31,29 @@
       "target": "api::peserta.peserta",
       "inversedBy": "fit_proper"
     },
-    "nilai_fit_proper": {
+    "nilai_fit_propers": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::nilai-fit-proper.nilai-fit-proper",
       "mappedBy": "fit_proper"
+    },
+    "status": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "max": 2,
+      "min": 0
+    },
+    "jenis_fit_proper": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenis-fit-proper.jenis-fit-proper",
+      "inversedBy": "fit_propers"
+    },
+    "total_penilaian_akhir_fit_proper": {
+      "type": "integer",
+      "max": 100,
+      "default": 0
     }
   }
 }

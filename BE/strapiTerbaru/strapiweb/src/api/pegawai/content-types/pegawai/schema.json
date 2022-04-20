@@ -83,12 +83,6 @@
       "target": "api::jabatan.jabatan",
       "inversedBy": "pegawais"
     },
-    "pengujis": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::penguji.penguji",
-      "mappedBy": "pegawai"
-    },
     "bidang": {
       "type": "relation",
       "relation": "manyToOne",
@@ -121,6 +115,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::peserta.peserta",
+      "mappedBy": "pegawai"
+    },
+    "penguji": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::penguji.penguji",
       "mappedBy": "pegawai"
     }
   }

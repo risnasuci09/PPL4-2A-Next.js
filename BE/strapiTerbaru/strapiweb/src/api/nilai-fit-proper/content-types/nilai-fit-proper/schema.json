@@ -15,12 +15,6 @@
     "total_nilai_fit_proper": {
       "type": "integer"
     },
-    "fit_proper": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::fit-proper.fit-proper",
-      "inversedBy": "nilai_fit_proper"
-    },
     "nilai_key_competency": {
       "type": "relation",
       "relation": "oneToOne",
@@ -38,6 +32,18 @@
       "relation": "oneToOne",
       "target": "api::nilai-proyeksi-jabatan.nilai-proyeksi-jabatan",
       "inversedBy": "nilai_fit_proper"
+    },
+    "fit_proper": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::fit-proper.fit-proper",
+      "inversedBy": "nilai_fit_propers"
+    },
+    "penguji": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::penguji.penguji",
+      "inversedBy": "nilai_fit_propers"
     }
   }
 }

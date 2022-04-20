@@ -14,6 +14,12 @@
     "namaJenis_fit_proper": {
       "type": "string",
       "required": false
+    },
+    "fit_propers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::fit-proper.fit-proper",
+      "mappedBy": "jenis_fit_proper"
     }
   }
 }
