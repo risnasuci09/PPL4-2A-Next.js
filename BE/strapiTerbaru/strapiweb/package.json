@@ -1,5 +1,5 @@
 {
-  "name": "strapiweb",
+  "name": "starpipln",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -11,16 +11,16 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.1.0",
-    "@strapi/plugin-users-permissions": "4.1.0",
-    "@strapi/plugin-i18n": "4.1.0",
+    "@strapi/strapi": "4.1.6",
+    "@strapi/plugin-users-permissions": "4.1.6",
+    "@strapi/plugin-i18n": "4.1.6",
     "pg": "8.6.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "7a22b5c5-41a2-4a1a-8316-3bc486a4fdb1"
+    "uuid": "f976b1e1-658c-40bf-8e43-5295598542dc"
   },
   "engines": {
     "node": ">=12.x.x <=16.x.x",

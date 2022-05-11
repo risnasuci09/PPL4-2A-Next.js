@@ -4,7 +4,8 @@
   "info": {
     "singularName": "nilai-personal-endurance",
     "pluralName": "nilai-personal-endurances",
-    "displayName": "nilai_personal_endurance"
+    "displayName": "nilai_personal_endurance",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "total_nilai_personal_endurance": {
-      "type": "integer"
+      "type": "decimal"
     },
     "internal_readiness": {
       "type": "integer"
@@ -24,7 +25,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::nilai-fit-proper.nilai-fit-proper",
-      "inversedBy": "nilai_personal_endurance"
+      "mappedBy": "nilai_personal_endurance"
     }
   }
 }

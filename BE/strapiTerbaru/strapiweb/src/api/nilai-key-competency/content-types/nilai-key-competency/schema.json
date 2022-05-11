@@ -4,7 +4,8 @@
   "info": {
     "singularName": "nilai-key-competency",
     "pluralName": "nilai-key-competencies",
-    "displayName": "nilai_key_competency"
+    "displayName": "nilai_key_competency",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "total_nilai_key_competencies": {
-      "type": "integer"
+      "type": "decimal"
     },
     "enthusiasthic_for_challenge": {
       "type": "integer"
@@ -42,7 +43,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::nilai-fit-proper.nilai-fit-proper",
-      "inversedBy": "nilai_key_competency"
+      "mappedBy": "nilai_key_competency"
     }
   }
 }

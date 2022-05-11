@@ -13,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "total_nilai_fit_proper": {
-      "type": "integer"
+      "type": "float"
     },
     "nilai_key_competency": {
       "type": "relation",
