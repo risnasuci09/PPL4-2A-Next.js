@@ -1,0 +1,113 @@
+/* .add{
+    border: 1px solid black;
+} */
+
+.tabel{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tabel th{
+    border: 2px solid black;
+}
+
+.tabel td{
+    border: 2px solid black;
+}
+
+.Email{
+    width: 30%;
+}
+
+.aksi{
+    width:10%
+}
+
+.titleForm{
+    /* color: #04AA6D; */
+    font-weight: bold;
+    /* background-color: aqua; */
+    /* z-index: 2; */
+}
+
+.Card{
+    width: 100%;
+  }
+  
+  * {
+  box-sizing: border-box;
+  font-size: medium;
+  }
+  
+  input[type=text], select,input[type=date] {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* color: #0452aa; */
+  
+  }
+  
+  input:disabled{
+  background-color: #cccccc;
+  }
+  
+  input:disabled::placeholder{
+  color: rgb(7, 7, 7);
+  }
+  
+  label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  }
+  
+  input[type=submit] {
+  background-color: #0452aa;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+  width: 50%;
+  }
+  
+  input[type=submit]:hover {
+  background-color: #458ea0;
+  }
+  
+  .container.head{
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #dbdbdb;
+  /* height: 12px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  }
+  
+  .container.body {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 2px;
+  }
+  
+  .container{
+  background-color: #ffffff;
+  padding: 20px;
+  }
+  
+  .titleForm{
+  /* color: #04AA6D; */
+  font-weight: bold;
+  /* background-color: aqua; */
+  /* z-index: 2; */
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  }
