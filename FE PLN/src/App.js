@@ -11,10 +11,12 @@ import Dash from "./component/Dashboard";
 import DataPenguji from "./component/Master/DataPenguji";
 import DataPeserta from "./component/Master/DataPeserta";
 import AddPenguji from "./component/Master/DataPenguji/add";
+import AddPeserta from "./component/Master/DataPeserta/add";
 import PendaftaranFitProper from "./component/FitProper/PendaftaranFitProper";
 import PendaftaranWawancara from "./component/FitProper/PendaftaranWawancara";
-import PenilaianFitProper from "./component/FitProper/PenilaianFitProper";
 import PenilaianWawancara from "./component/FitProper/PenilaianWawancara";
+import DaftarFitProper from "./component/FitProper/PenilaianFitProper/DaftarFitProper";
+import PenilaianFitProperbyID from "./component/FitProper/PenilaianFitProper/NilaiFitProper";
 
 function App() {
   const [leftActive, setLeftActive] = useState(false);
@@ -35,9 +37,14 @@ function App() {
               <Route path="/master/data-peserta" element={<DataPeserta />} />
               <Route path="/master/data-penguji" element={<DataPenguji />} />
               <Route path="/master/data-penguji/add" element={<AddPenguji />} />
+              <Route path="/master/data-peserta/add" element={<AddPeserta />} />
+                <Route
+                  path="/fit-proper/daftar-fit-proper/penilaian-fit-proper/:id"
+                  element={<PenilaianFitProperbyID />}
+                />
               <Route
-                path="/fit-proper/pendaftaran-fit-proper"
-                element={<PendaftaranFitProper />}
+                path="/fit-proper/daftar-fit-proper/penilaian-fit-proper"
+                element={<DaftarFitProper />}
               />
               <Route
                 path="/fit-proper/pendaftaran-wawancara"
@@ -47,10 +54,7 @@ function App() {
                 path="/fit-proper/penilaian-wawancara"
                 element={<PenilaianWawancara />}
               />
-              <Route
-                path="/fit-proper/penilaian-fit-proper"
-                element={<PenilaianFitProper />}
-              />
+              
             </Routes>
           </Router>
         </div></div>

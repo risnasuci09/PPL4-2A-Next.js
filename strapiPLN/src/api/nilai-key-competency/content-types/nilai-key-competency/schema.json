@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nilai_key_competencies",
+  "info": {
+    "singularName": "nilai-key-competency",
+    "pluralName": "nilai-key-competencies",
+    "displayName": "nilai_key_competency",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "total_nilai_key_competencies": {
+      "type": "decimal"
+    },
+    "enthusiasthic_for_challenge": {
+      "type": "integer"
+    },
+    "creative_innovative": {
+      "type": "integer"
+    },
+    "building_business_partnership": {
+      "type": "integer"
+    },
+    "strategic_orientation": {
+      "type": "integer"
+    },
+    "customer_focus_oriented": {
+      "type": "integer"
+    },
+    "driving_execution": {
+      "type": "integer"
+    },
+    "visionary_leadership": {
+      "type": "integer"
+    },
+    "developing_other": {
+      "type": "integer"
+    },
+    "nilai_fit_proper": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nilai-fit-proper.nilai-fit-proper",
+      "mappedBy": "nilai_key_competency"
+    }
+  }
+}

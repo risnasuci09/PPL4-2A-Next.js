@@ -3,6 +3,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { RiEditBoxLine } from 'react-icons/ri';
 import "./index.css";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 export default function Index() {
 
@@ -15,6 +16,22 @@ export default function Index() {
         console.log(res);
         setData(res.data.data);
       })
+  };
+
+  const deleteData = (id) => {
+    
+    axios
+      .delete(`http://localhost:1337/api/pengujis/${id}`)
+      .then((res) => {
+        console.log("success del");
+        setData([]);
+        //successNotify();
+      })
+      .catch((err) => {
+        console.log("fail",err);
+        //errorNotify();
+      });
+    console.log("id yang akan di delete",id);
   };
 
   useEffect(() => {
@@ -46,7 +63,7 @@ export default function Index() {
           <th>Jabatan</th>
           <th>Grade</th>
           <th>Jenjang</th>
-          <th>Aksi</th>
+          <th>Hapus</th>
         </tr>
       </thead>
         
@@ -62,8 +79,10 @@ export default function Index() {
           <td>{data.attributes.pegawai.data.attributes.grade.data.attributes.kode_grade}</td>
           <td>{data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</td>
           <td className="aksi">
-                <AiOutlineDelete size="1.5em" fill="red" />
-                <RiEditBoxLine size="1.5em" fill="blue" />
+                {/* <AiOutlineDelete size="1.5em" fill="red" /> */}
+                <Button type="submit" onClick={()=>deleteData(data.id)}>
+                  Hapus
+                </Button>
           </td>
     </tr>
     </>

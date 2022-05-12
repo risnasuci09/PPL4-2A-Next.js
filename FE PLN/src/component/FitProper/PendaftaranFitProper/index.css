@@ -2,8 +2,6 @@
   width: 100%;
 }
 
-
-
 * {
 box-sizing: border-box;
 font-size: medium;
@@ -60,6 +58,7 @@ border-bottom-left-radius: 5px;
 border-bottom-right-radius: 5px;
 margin-bottom: 2px;
 }
+
 .container{
 background-color: #ffffff;
 padding: 20px;

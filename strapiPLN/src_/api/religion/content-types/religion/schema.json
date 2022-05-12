@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "religions",
+  "info": {
+    "singularName": "religion",
+    "pluralName": "religions",
+    "displayName": "religion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama_religion": {
+      "type": "string",
+      "required": true,
+      "maxLength": 20
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "religion"
+    }
+  }
+}

@@ -103,7 +103,7 @@ function SideNav(props) {
             <a href="/fit-proper/pendaftaran-wawancara">
               Pendaftaran Wawancara
             </a>
-            <a href="/fit-proper/penilaian-fit-proper">
+            <a href="/fit-proper/daftar-fit-proper/penilaian-fit-proper">
               Penilaian Fit & Proper
             </a>
             <a href="/fit-proper/penilaian-wawancara">Penilaian Wawancara</a>
