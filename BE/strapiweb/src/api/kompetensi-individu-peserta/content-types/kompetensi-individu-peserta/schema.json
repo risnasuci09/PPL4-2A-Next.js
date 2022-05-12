@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kompetensi_individu_pesertas",
+  "info": {
+    "singularName": "kompetensi-individu-peserta",
+    "pluralName": "kompetensi-individu-pesertas",
+    "displayName": "kompetensi_individu_peserta",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ki_inti_peserta": {
+      "type": "string",
+      "required": true
+    },
+    "ki_peran_peserta": {
+      "type": "string",
+      "required": true
+    },
+    "ki_bidang_peserta": {
+      "type": "string",
+      "required": true
+    },
+    "peserta": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::peserta.peserta",
+      "inversedBy": "kompetensi_individu_peserta"
+    }
+  }
+}
