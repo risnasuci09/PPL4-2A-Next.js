@@ -41,6 +41,12 @@
       "relation": "oneToOne",
       "target": "api::nilai-wawancara.nilai-wawancara",
       "mappedBy": "wawancara"
+    },
+    "status": {
+      "max": 2,
+      "min": 0,
+      "required": false,
+      "type": "integer"
     }
   }
 }
