@@ -40,6 +40,12 @@
       "relation": "oneToMany",
       "target": "api::proyeksi.proyeksi",
       "mappedBy": "jenjang"
+    },
+    "jenis_jenjang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenis-jenjang.jenis-jenjang",
+      "inversedBy": "jenjangs"
     }
   }
 }

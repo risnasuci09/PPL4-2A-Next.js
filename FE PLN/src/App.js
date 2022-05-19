@@ -34,11 +34,21 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" exact element={<Dash />} />
+              {/* Master */}
               <Route path="/master/data-peserta" element={<DataPeserta />} />
               <Route path="/master/data-penguji" element={<DataPenguji />} />
               <Route path="/master/data-penguji/add" element={<AddPenguji />} />
               <Route path="/master/data-peserta/add" element={<AddPeserta />} />
-                <Route
+              {/* Fit Proper */}
+              <Route
+                  path="/fit-proper/pendaftaran-fit-proper"
+                  element={<PendaftaranFitProper />}
+                />
+              {/* <Route
+                  path="/fit-proper/daftar-fit-proper/penilaian-fit-proper"
+                  element={<PenilaianFitProper />}
+                /> */}
+              <Route
                   path="/fit-proper/daftar-fit-proper/penilaian-fit-proper/:id"
                   element={<PenilaianFitProperbyID />}
                 />

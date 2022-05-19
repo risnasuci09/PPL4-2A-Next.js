@@ -16,10 +16,6 @@
       "type": "datetime",
       "required": false
     },
-    "nilai_wawancara": {
-      "type": "integer",
-      "required": true
-    },
     "pengujis": {
       "type": "relation",
       "relation": "manyToMany",
@@ -39,6 +35,18 @@
       "relation": "oneToOne",
       "target": "api::peserta.peserta",
       "inversedBy": "wawancara"
+    },
+    "nilai_wawancara": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nilai-wawancara.nilai-wawancara",
+      "mappedBy": "wawancara"
+    },
+    "status": {
+      "max": 2,
+      "min": 0,
+      "required": false,
+      "type": "integer"
     }
   }
 }

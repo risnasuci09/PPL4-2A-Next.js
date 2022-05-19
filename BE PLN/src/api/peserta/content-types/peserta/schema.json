@@ -15,25 +15,19 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::wawancara.wawancara",
-      "inversedBy": "peserta"
-    },
-    "fit_proper": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::fit-proper.fit-proper",
-      "inversedBy": "peserta"
-    },
-    "kompetensi_individu_peserta": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::kompetensi-individu-peserta.kompetensi-individu-peserta",
-      "inversedBy": "peserta"
+      "mappedBy": "peserta"
     },
     "pegawai": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::pegawai.pegawai",
       "inversedBy": "pesertas"
+    },
+    "fit_proper": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::fit-proper.fit-proper",
+      "mappedBy": "peserta"
     }
   }
 }

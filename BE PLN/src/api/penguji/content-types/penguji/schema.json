@@ -14,9 +14,9 @@
   "attributes": {
     "pegawai": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::pegawai.pegawai",
-      "inversedBy": "pengujis"
+      "inversedBy": "penguji"
     },
     "wawancaras": {
       "type": "relation",
@@ -24,11 +24,17 @@
       "target": "api::wawancara.wawancara",
       "mappedBy": "pengujis"
     },
-    "fit_propers": {
+    "nilai_fit_propers": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::fit-proper.fit-proper",
-      "mappedBy": "pengujis"
+      "relation": "oneToMany",
+      "target": "api::nilai-fit-proper.nilai-fit-proper",
+      "mappedBy": "penguji"
+    },
+    "nilai_wawancaras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nilai-wawancara.nilai-wawancara",
+      "mappedBy": "penguji"
     }
   }
 }
