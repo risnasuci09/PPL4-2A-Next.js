@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fit_propers",
+  "info": {
+    "singularName": "fit-proper",
+    "pluralName": "fit-propers",
+    "displayName": "fit_proper",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "proyeksi_jabatan_fit_proper": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "jadwal_fit_proper": {
+      "type": "datetime",
+      "required": true
+    },
+    "nilai_fit_proper": {
+      "type": "integer",
+      "required": true
+    },
+    "pengujis": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::penguji.penguji",
+      "inversedBy": "fit_propers"
+    },
+    "jenjang_jabatan_fit_proper": {
+      "type": "string",
+      "required": true
+    },
+    "peserta": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::peserta.peserta",
+      "inversedBy": "fit_proper"
+    }
+  }
+}

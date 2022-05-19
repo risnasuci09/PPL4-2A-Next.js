@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "grades",
+  "info": {
+    "singularName": "grade",
+    "pluralName": "grades",
+    "displayName": "grade",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "kode_grade": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 10
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "grade"
+    },
+    "jenjangs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::jenjang.jenjang",
+      "inversedBy": "grades"
+    },
+    "proyeksis": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::proyeksi.proyeksi",
+      "mappedBy": "grade"
+    },
+    "kompetensi_individu": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::kompetensi-individu.kompetensi-individu",
+      "inversedBy": "grade"
+    }
+  }
+}

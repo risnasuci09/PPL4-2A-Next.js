@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cobas",
+  "info": {
+    "singularName": "coba",
+    "pluralName": "cobas",
+    "displayName": "coba",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "kelas": {
+      "type": "string"
+    }
+  }
+}
