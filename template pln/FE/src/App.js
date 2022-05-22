@@ -1,67 +1,53 @@
-import React, { useState } from "react";
-// import logo from "./logo.svg";
-// import { Button, Row, Col, Modal, Container, Nav } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./pages/Home";
-import Products from "./pages/Products";
-import SideNav from "./component/SideNav/SideNav";
-// import Nav from "./component/Nav/Nav";
-import Dash from "./component/Dashboard";
-import DataPenguji from "./component/Master/DataPenguji";
-import DataPeserta from "./component/Master/DataPeserta";
-import PendaftaranFitProper from "./component/FitProper/PendaftaranFitProper/index";
-import PendaftaranWawancara from "./component/FitProper/PendaftaranWawancara/index";
-import PenilaianFitProper from "./component/FitProper/PenilaianFitProper";
-import PenilaianWawancara from "./component/FitProper/PenilaianWawancara";
-import JadwalFitProper from "./component/FitProper/JadwalFitProper/Index";
+import logo from './logo.svg';
+import './App.css';
+import Header from './master/Header';
+import Sidebar from './master/Sidebar';
+import Footer from './master/Footer';
+import Dashboard from './page/dashboard/Dashboard';
+import DataPeserta from './page/master/DataPeserta';
+import DataPenguji from './page/master/DataPenguji';
+import React from "react";
+import {
+	BrowserRouter as Router,
+	Route,
+	Link, sw, Routes
+} from "react-router-dom";
+import PenilaianFitProper from './page/fit-proper/PenilaianFitProper';
+import PendaftaranFitProper from './page/fit-proper/PendaftaranFitProper';
+import PendaftaranWawancara from './page/fit-proper/PendaftaranWawancara';
+import PenilaianWawancara from './page/fit-proper/PenilaianWawancara';
+import PenilaianFitProperById from './page/fit-proper/PenilaianFitProperById';
+import PenilaianWawancaraById from './page/fit-proper/PenilaianWawancaraById';
+import AddPeserta from './page/master/AddPeserta';
 
 function App() {
-  const [leftActive, setLeftActive] = useState(false);
-  return (
-    <>
-      
-      <div>
-        <SideNav
-          onLeft={leftActive}
-          onSide={() => setLeftActive(!leftActive)}
-        />
-        <div className="container1">
-        <div className={leftActive ? "main active" : "main"}>
-          
-          <Router>
-            <Routes>
-              <Route path="/" exact element={<Dash />} />
-              {/* Master */}
-                <Route path="/master/data-peserta" element={<DataPeserta />} />
-                <Route path="/master/data-penguji" element={<DataPenguji />} />
-              {/* Fit Proper */}
-                <Route
-                  path="/fit-proper/pendaftaran-fit-proper"
-                  element={<PendaftaranFitProper />}
-                />
-                <Route
-                  path="/fit-proper/pendaftaran-wawancara"
-                  element={<PendaftaranWawancara />}
-                />
-                <Route
-                  path="/fit-proper/penilaian-wawancara"
-                  element={<PenilaianWawancara />}
-                />
-                <Route
-                  path="/fit-proper/penilaian-fit-proper"
-                  element={<PenilaianFitProper />}
-                />
-                <Route
-                  path="/fit-proper/jadwal"
-                  element={<JadwalFitProper />}
-                />
-            </Routes>
-          </Router>
-        </div></div>
-      </div>
-    </>
-  );
+	return (
+		<Router>
+			<div className="wrapper">
+				<Header />
+				<Sidebar />
+				<div className="content-wrapper">
+					<div className="content-header">
+						<div className="container-fluid">
+							<Routes>
+								<Route path='/dashboard' element={<Dashboard />} />
+								<Route path='/master/dataPeserta' element={<DataPeserta />} />
+								<Route path='/master/dataPeserta/add' element={<AddPeserta />} />
+								<Route path='/master/dataPenguji' element={<DataPenguji />} />
+								<Route path='/fit-proper/pendaftaran' element={<PendaftaranFitProper />} />
+								<Route path='/fit-proper/penilaian' element={<PenilaianFitProper />} />
+								<Route path='/wawancara/pendaftaran' element={<PendaftaranWawancara />} />
+								<Route path='/wawancara/penilaian' element={<PenilaianWawancara />} />
+								<Route path='/wawancara/penilaian/:id' element={<PenilaianWawancaraById />} />
+								<Route path='/fit-proper/penilaian/:id' element={<PenilaianFitProperById />} />
+							</Routes>
+						</div>
+					</div>
+				</div>
+				<Footer />
+			</div>
+		</Router>
+	);
 }
 
 export default App;
