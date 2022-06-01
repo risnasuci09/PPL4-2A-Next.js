@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Api from "../../api/Api";
 import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
 import $ from 'jquery';

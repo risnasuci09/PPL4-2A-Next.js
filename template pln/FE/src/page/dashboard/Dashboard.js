@@ -1,3 +1,4 @@
+import Logo from "../../images/plnLogo.png"
 export default function Dashboard() {
     return (
         <div className="row mb-2">
@@ -10,6 +11,7 @@ export default function Dashboard() {
                     <li className="breadcrumb-item active">Dashboard v1</li>
                 </ol>
             </div>
+            
         </div>
     );
 }

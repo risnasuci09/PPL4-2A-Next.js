@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Logo from "../images/plnLogo.png"
+import "./Sidebar.scss"
 import {
   BrowserRouter as Router,
   Route,
@@ -13,6 +15,8 @@ export default function Sidebar(props) {
   const [openNavItem,setNavItem] = useState({
     dashboard: false,
     master: false,
+    fitproper: false,
+    report:false
   })
 
   const processingNavActive = (key) =>{
@@ -20,6 +24,7 @@ export default function Sidebar(props) {
       dashboard: false,
       master: false,
       fitproper: false,
+      report: false
     };
 
     if(key === "dashboard"){
@@ -28,6 +33,8 @@ export default function Sidebar(props) {
       temp.master = true;
     }else if(key === "fitproper"){
       temp.fitproper = true;
+    }else if(key === "report"){
+      temp.report = true
     }
 
     setNavItem(temp);
@@ -38,10 +45,10 @@ export default function Sidebar(props) {
   });
 
   return (
-    <aside className="main-sidebar sidebar-dark-primary elevation-4">
+    <aside className="main-sidebar sidebar-dark-warning elevation-4">
       <a href="#" className="brand-link">
-        <img src="" className="brand-image" />
-        <span className="brand-text font-weight-light">FP TLN</span>
+        <img src={Logo} className="brand-image" />
+        <span className="brand-text font-weight-dark">PLN Successor</span>
       </a>
       <div className="sidebar">
         <nav className="mt-2">
@@ -160,6 +167,64 @@ export default function Sidebar(props) {
               </ul>
             </li>
             {/* =============== */}
+            <li
+              className={ openNavItem.master? "nav-item menu-open" : "nav-item"}
+              onClick={() => processingNavActive("report")}
+            >
+              <a
+                href=""
+                className={ openNavItem.report? "nav-link active" : "nav-link"}
+              >
+                <i className="nav-icon far fa-clipboard"></i>
+                <p>
+                  Report
+                  <i className="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <NavLink
+                    to="/reports/hasil-fit-proper"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <p>Hasil Nilai Fit & Proper</p>
+                  </NavLink>
+                </li>
+                {/* <li className="nav-item">
+                  <NavLink
+                    to="/#"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <p>Cetak Nilai Fit & Proper</p>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to="/#"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <p>Rekap Nilai Wawancara</p>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to="/#"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <p>Cetak Nilai Wawancara</p>
+                  </NavLink>
+                </li> */}
+                
+              </ul>
+            </li>
           </ul>
         </nav>
       </div>

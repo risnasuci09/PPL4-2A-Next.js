@@ -19,6 +19,8 @@ import PenilaianWawancara from './page/fit-proper/PenilaianWawancara';
 import PenilaianFitProperById from './page/fit-proper/PenilaianFitProperById';
 import PenilaianWawancaraById from './page/fit-proper/PenilaianWawancaraById';
 import AddPeserta from './page/master/AddPeserta';
+import AddPenguji from './page/master/AddPenguji';
+import HasilNilaiFitProper from './page/reports/HasilNilaiFitProper';
 
 function App() {
 	return (
@@ -34,12 +36,14 @@ function App() {
 								<Route path='/master/dataPeserta' element={<DataPeserta />} />
 								<Route path='/master/dataPeserta/add' element={<AddPeserta />} />
 								<Route path='/master/dataPenguji' element={<DataPenguji />} />
+								<Route path='/master/dataPenguji/add' element={<AddPenguji />} />
 								<Route path='/fit-proper/pendaftaran' element={<PendaftaranFitProper />} />
 								<Route path='/fit-proper/penilaian' element={<PenilaianFitProper />} />
 								<Route path='/wawancara/pendaftaran' element={<PendaftaranWawancara />} />
 								<Route path='/wawancara/penilaian' element={<PenilaianWawancara />} />
 								<Route path='/wawancara/penilaian/:id' element={<PenilaianWawancaraById />} />
 								<Route path='/fit-proper/penilaian/:id' element={<PenilaianFitProperById />} />
+								<Route path='/reports/hasil-fit-proper' element={<HasilNilaiFitProper/>}/>
 							</Routes>
 						</div>
 					</div>

@@ -76,12 +76,11 @@ export default function DataPeserta() {
                     <div className="card">
                         <div className="card-body">
                             <a href="dataPeserta/add" className="btn btn-sm bg-primary mb-4">
-                                <i className="fa fa-user-plus mr-2"></i> TambahData Peserta</a>
+                                <i className="fa fa-user-plus mr-2"></i> Tambah Data Peserta</a>
                             <div className="dt-responsive table-responsive">
                                 <table className="table table-striped table-bordered nowrap dttable">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
                                             <th>Nama</th>
                                             <th>NIP</th>
                                             <th>Jabatan</th>
@@ -92,11 +91,11 @@ export default function DataPeserta() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dataPegawai.map((data, index) => {
+                                        {dataPegawai.map((data, index,E) => {
+                                            console.log("E",E);
                                             if (data.attributes.fit_proper.data === null || (data.attributes.fit_proper.data !== null ? data.attributes.fit_proper.data.attributes.status : 1) < 1) {
                                                 return (
                                                     <tr key={index}>
-                                                        <td>{index + 1}</td>
                                                         <td>{data.attributes.pegawai.data.attributes.nama_pegawai}</td>
                                                         <td>{data.attributes.pegawai.data.attributes.nip}</td>
                                                         <td>{data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</td>

@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 export default function PenilaianFitProperById() {
     const [infoFitProper, setInfoFitProper] = useState([]);
     let { id } = useParams();
+    const [statusNilai, setStatusNilai] = useState(false);
     const [countLoop, setCountLoop] = useState(0);
 
     const initial_data = [
@@ -72,11 +73,11 @@ export default function PenilaianFitProperById() {
             });
     };
 
-    const updateNilaiCompetencyByIndex = (index) => {
+    const updateNilaiCompetencyByIndex = (index, total) => {
         let id = infoFitProper.attributes.nilai_fit_propers.data[index].attributes.nilai_key_competency.data.id;
-        console.log("enthuasiasthic", datas[index].enthuasiasthic)
+        console.log("total competency", total);
         const data = {
-            total_nilai_key_competencies: 0,
+            total_nilai_key_competencies: total,
             enthusiasthic_for_challenge: datas[index].enthuasiasthic,
             creative_innovative: datas[index].creative,
             building_business_partnership: datas[index].building,
@@ -86,6 +87,7 @@ export default function PenilaianFitProperById() {
             visionary_leadership: datas[index].visionary,
             developing_other: datas[index].developing
         }
+
         axios
             .put(`http://localhost:1337/api/nilai-key-competencies/${id}`, { data })
             .then((res) => {
@@ -97,10 +99,11 @@ export default function PenilaianFitProperById() {
             });
     }
 
-    const updateNilaiJabatanByIndex = (index) => {
+    const updateNilaiJabatanByIndex = (index, total) => {
         let id = infoFitProper.attributes.nilai_fit_propers.data[index].attributes.nilai_proyeksi_jabatan.data.id;
+        console.log("total jabatan", total);
         const data = {
-            total_nilai_proyeksi_jabatan: 0,
+            total_nilai_proyeksi_jabatan: total,
             keandalan_sistem: datas[index].keandalan,
             kecepatan_recovery: datas[index].kecepatan,
             manajemen_aset: datas[index].manajemen,
@@ -117,8 +120,9 @@ export default function PenilaianFitProperById() {
             });
     }
 
-    const updateNilaiEnduranceByIndex = (index) => {
+    const updateNilaiEnduranceByIndex = (index, total) => {
         let id = infoFitProper.attributes.nilai_fit_propers.data[index].attributes.nilai_personal_endurance.data.id;
+        console.log("total endurance", total);
         const data = {
             total_nilai_personal_endurance: 0,
             internal_readiness: datas[index].internal,
@@ -128,16 +132,61 @@ export default function PenilaianFitProperById() {
             .put(`http://localhost:1337/api/nilai-personal-endurances/${id}`, { data })
             .then((res) => {
                 console.log("success update endurance");
+                setStatusNilai(true);
             })
             .catch((err) => {
                 console.log("fail", err);
             });
     }
+    const updateNilaiFitProper = (index, total) => {
+        const data = {
+            total_nilai_fit_proper: total
+        }
 
+        axios.put(`http://localhost:1337/api/nilai-fit-propers/${index}`, { data })
+            .then((res) => {
+                console.log("success update nilai fit proper");
+            }).catch((err) => {
+
+            })
+    }
+    const updateStatusFitProper = () => {
+        let id = infoFitProper.id;
+        let total = 0, totalTemp = 0;
+        infoFitProper.attributes.nilai_fit_propers.data.map((nilai, index) => {
+            totalTemp = 0;
+            totalTemp = (nilai.attributes.nilai_key_competency.data.attributes.total_nilai_key_competencies
+                + nilai.attributes.nilai_personal_endurance.data.attributes.total_nilai_personal_endurance
+                + nilai.attributes.nilai_proyeksi_jabatan.data.attributes.total_nilai_proyeksi_jabatan) / 3;
+            console.log("totalTemp", totalTemp);
+            updateNilaiFitProper(nilai.id, totalTemp);
+            total = total + totalTemp;
+        })
+        total = total / countLoop;
+        let data = {
+            status: 1
+        }
+        if (total < 70) {
+            data.status = 2
+        }
+        // console.log("total berapa ?",data.status);
+        axios
+            .put(`http://localhost:1337/api/fit-propers/${id}`, { data })
+            .then((res) => {
+                console.log("update status fit proper successs");
+            })
+            .catch((err) => {
+                console.log("status fail update");
+            })
+        setStatusNilai(false);
+    }
     const updateAll = (index, name) => {
-        updateNilaiCompetencyByIndex(index);
-        updateNilaiJabatanByIndex(index);
-        updateNilaiEnduranceByIndex(index);
+        let total = (datas[index].enthuasiasthic + datas[index].creative + datas[index].building + datas[index].strategic + datas[index].customer + datas[index].driving + datas[index].visionary + datas[index].developing) / 8;
+        updateNilaiCompetencyByIndex(index, total);
+        total = (datas[index].keandalan + datas[index].kecepatan + datas[index].manajemen + datas[index].konstribusi) / 4;
+        updateNilaiJabatanByIndex(index, total);
+        total = (datas[index].eksternal + datas[index].internal) / 2;
+        updateNilaiEnduranceByIndex(index, total);
         swal("Berhasil!", "Berhasil menyimpan pada " + name, "success");
     }
 
@@ -162,7 +211,7 @@ export default function PenilaianFitProperById() {
             };
             temp.building = infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.building_business_partnership !== null ? infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.building_business_partnership : 0;
             temp.creative = infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.creative_innovative !== null ? infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.creative_innovative : 0;
-            temp.customer = infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.customer_focus_oriented !== null ? infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.customer_focus_oriente : 0;
+            temp.customer = infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.customer_focus_oriented !== null ? infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.customer_focus_oriented : 0;
             temp.developing = infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.developing_other !== null ? infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.developing_other : 0;
             temp.driving = infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.driving_execution !== null ? infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.driving_execution : 0;
             temp.enthuasiasthic = infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.enthusiasthic_for_challenge !== null ? infoFitProper.attributes.nilai_fit_propers.data[countLoop].attributes.nilai_key_competency.data.attributes.enthusiasthic_for_challenge : 0;
@@ -189,7 +238,10 @@ export default function PenilaianFitProperById() {
                 fillDatas();
             }
         }
-        // console.log("isi datas", datas);
+        if (statusNilai) {
+            updateStatusFitProper();
+        }
+        console.log("isi datas", datas);
         console.log("isi infofitproper", infoFitProper);
     });
     return (
@@ -215,8 +267,8 @@ export default function PenilaianFitProperById() {
                                 <h5 className="">Tabel Penilaian</h5>
                             </div>
                             <div>
-                                <p className='card-subtitle'>Nama &emsp;: {infoFitProper.attributes.peserta.data.attributes.pegawai.data.attributes.nama_pegawai} <br/>
-                                NIP&emsp;&emsp;&nbsp;: {infoFitProper.attributes.peserta.data.attributes.pegawai.data.attributes.nip} </p>
+                                <p className='card-subtitle'>Nama &emsp;: {infoFitProper.attributes.peserta.data.attributes.pegawai.data.attributes.nama_pegawai} <br />
+                                    NIP&emsp;&emsp;&nbsp;: {infoFitProper.attributes.peserta.data.attributes.pegawai.data.attributes.nip} </p>
                             </div>
                         </div>
 

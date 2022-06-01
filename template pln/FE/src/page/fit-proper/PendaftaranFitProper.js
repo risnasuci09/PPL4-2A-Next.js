@@ -391,7 +391,7 @@ export default function PendaftaranFitProper() {
                             <div className="row mt-2">
                                 <div className="col-11" ></div>
                                 <div className="col-1">
-                                    <input type="button" value="Submit" className="btn btn-success" onClick={() => setOnSubmit(true)} />
+                                    <input type="button" value="Submit" className="btn btn-success" onClick={() => setOnSubmit(true)} disabled={onDisable} />
                                 </div>
                             </div>
                             {/* ======= */}
