@@ -4,7 +4,8 @@
   "info": {
     "singularName": "peserta",
     "pluralName": "pesertas",
-    "displayName": "peserta"
+    "displayName": "peserta",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,6 +29,30 @@
       "relation": "oneToOne",
       "target": "api::fit-proper.fit-proper",
       "mappedBy": "peserta"
+    },
+    "grade": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grade.grade",
+      "inversedBy": "pesertas"
+    },
+    "jabatan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jabatan.jabatan",
+      "inversedBy": "pesertas"
+    },
+    "jenjang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenjang.jenjang",
+      "inversedBy": "pesertas"
+    },
+    "unit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "pesertas"
     }
   }
 }

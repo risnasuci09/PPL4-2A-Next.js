@@ -41,6 +41,12 @@
       "relation": "oneToMany",
       "target": "api::proyeksi.proyeksi",
       "mappedBy": "unit"
+    },
+    "pesertas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::peserta.peserta",
+      "mappedBy": "unit"
     }
   }
 }

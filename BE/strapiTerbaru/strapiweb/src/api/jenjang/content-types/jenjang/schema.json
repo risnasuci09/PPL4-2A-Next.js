@@ -46,6 +46,12 @@
       "relation": "manyToOne",
       "target": "api::jenis-jenjang.jenis-jenjang",
       "inversedBy": "jenjangs"
+    },
+    "pesertas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::peserta.peserta",
+      "mappedBy": "jenjang"
     }
   }
 }

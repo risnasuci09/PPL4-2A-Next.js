@@ -44,6 +44,11 @@
       "relation": "manyToOne",
       "target": "api::penguji.penguji",
       "inversedBy": "nilai_fit_propers"
+    },
+    "status_edit": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
