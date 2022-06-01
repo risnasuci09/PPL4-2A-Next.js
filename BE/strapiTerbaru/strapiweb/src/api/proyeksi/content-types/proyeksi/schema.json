@@ -35,6 +35,12 @@
       "relation": "manyToOne",
       "target": "api::unit.unit",
       "inversedBy": "proyeksis"
+    },
+    "fit_propers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::fit-proper.fit-proper",
+      "mappedBy": "proyeksi"
     }
   }
 }

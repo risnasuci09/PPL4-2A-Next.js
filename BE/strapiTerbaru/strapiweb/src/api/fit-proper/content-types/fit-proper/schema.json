@@ -54,6 +54,12 @@
       "type": "integer",
       "max": 100,
       "default": 0
+    },
+    "proyeksi": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::proyeksi.proyeksi",
+      "inversedBy": "fit_propers"
     }
   }
 }
