@@ -1,0 +1,38 @@
+/* .add{
+    border: 1px solid black;
+} */
+
+.tabel{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tabel th{
+    border: 2px solid black;
+}
+
+.tabel td{
+    border: 2px solid black;
+}
+
+.Email{
+    width: 30%;
+}
+
+.aksi{
+    width:5%
+}
+
+.titleForm{
+    /* color: #04AA6D; */
+    font-weight: bold;
+    /* background-color: aqua; */
+    /* z-index: 2; */
+}
+
+.Index input{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
