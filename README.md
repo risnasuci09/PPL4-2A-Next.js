@@ -6,3 +6,7 @@ D32A
 - Salsabila Putri Prameswari - 201511029
 - Muhammad Daffa Aushaf - 201511017
 - Diwan Purnama - 201511007
+
+```diff
+  - TUGAS EAS ADA PADA BRANCH MASTER
+```
