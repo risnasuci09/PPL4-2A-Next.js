@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pesertas",
+  "info": {
+    "singularName": "peserta",
+    "pluralName": "pesertas",
+    "displayName": "peserta",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "wawancara": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wawancara.wawancara",
+      "mappedBy": "peserta"
+    },
+    "pegawai": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pegawai.pegawai",
+      "inversedBy": "pesertas"
+    },
+    "fit_proper": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::fit-proper.fit-proper",
+      "mappedBy": "peserta"
+    },
+    "grade": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grade.grade",
+      "inversedBy": "pesertas"
+    },
+    "jabatan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jabatan.jabatan",
+      "inversedBy": "pesertas"
+    },
+    "jenjang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenjang.jenjang",
+      "inversedBy": "pesertas"
+    },
+    "unit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "pesertas"
+    }
+  }
+}
