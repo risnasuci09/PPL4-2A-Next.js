@@ -4,7 +4,8 @@
   "info": {
     "singularName": "nilai-wawancara",
     "pluralName": "nilai-wawancaras",
-    "displayName": "nilai_wawancara"
+    "displayName": "nilai_wawancara",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,12 @@
       "relation": "oneToOne",
       "target": "api::wawancara.wawancara",
       "inversedBy": "nilai_wawancara"
+    },
+    "penguji": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::penguji.penguji",
+      "inversedBy": "nilai_wawancaras"
     }
   }
 }

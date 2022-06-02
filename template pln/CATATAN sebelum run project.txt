@@ -1,0 +1,6 @@
+LAKUKAN DIBAWAH INI SEBELUM RUN PROJECT
+1. npm install
+2. npm i react-router-dom
+3. npm i react-icons
+4. npm i axios
+5. npm i multiselect-react-dropdown

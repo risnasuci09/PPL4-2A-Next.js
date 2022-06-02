@@ -29,6 +29,12 @@
       "relation": "oneToMany",
       "target": "api::nilai-fit-proper.nilai-fit-proper",
       "mappedBy": "penguji"
+    },
+    "nilai_wawancaras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nilai-wawancara.nilai-wawancara",
+      "mappedBy": "penguji"
     }
   }
 }

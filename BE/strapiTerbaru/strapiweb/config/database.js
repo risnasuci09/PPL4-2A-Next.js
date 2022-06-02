@@ -11,3 +11,21 @@ module.exports = ({ env }) => ({
     },
   },
 });
+// const parse = require('pg-connection-string').parse;
+// const config = parse(process.env.DATABASE_URL);
+// module.exports = ({ env }) => ({
+//   connection: {
+//     client: 'postgres',
+//     connection: {
+//       host: '103.102.153.143',
+//       port: config.port,
+//       database: 'db_ka02',
+//       user: 'ka02',
+//       password: 'JTKPolban_2022',
+//       ssl: {
+//         rejectUnauthorized: false
+//       },
+//     },
+//     debug: false,
+//   },
+// });
