@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "proyeksi_jabatan_fit_proper": {
-      "type": "string",
-      "required": true,
-      "maxLength": 100
-    },
     "jadwal": {
       "type": "datetime",
       "required": true
@@ -51,7 +46,7 @@
       "inversedBy": "fit_propers"
     },
     "total_penilaian_akhir_fit_proper": {
-      "type": "integer",
+      "type": "decimal",
       "max": 100,
       "default": 0
     },
@@ -60,6 +55,11 @@
       "relation": "manyToOne",
       "target": "api::proyeksi.proyeksi",
       "inversedBy": "fit_propers"
+    },
+    "status_edit": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
