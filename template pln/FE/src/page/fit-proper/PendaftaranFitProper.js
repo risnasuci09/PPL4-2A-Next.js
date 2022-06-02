@@ -5,6 +5,7 @@ import swal from "sweetalert";
 // import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 
 export default function PendaftaranFitProper() {
+    const [listProyeksi, setListProyeksi] = useState([]);
     const [dataDiri, setDataDiri] = useState({
         nip: "",
         nama: "",
@@ -27,17 +28,25 @@ export default function PendaftaranFitProper() {
     });
     const [nilaiFitProper, setNilaiFitProper] = useState([]);
     const [onSubmit, setOnSubmit] = useState(false);
+    const [infoProyeksi, setInfoProyeksi] = useState({
+        grade: "",
+        jabatan: "",
+        jenjang: "",
+        unit: ""
+    })
 
     const postData = () => {
         const data = {
-            proyeksi_jabatan_fit_proper: dataDiri.proyeksi,
+            proyeksi_jabatan_fit_proper: "test",
+            proyeksi: dataDiri.proyeksi,
             jadwal: dataDiri.date,
             peserta: dataDiri.id,
             jenis_fit_proper: dataDiri.jenis,
-            jenjang_jabatan_fit_proper: dataDiri.jenjang,
+            jenjang_jabatan_fit_proper: infoProyeksi.jenjang,
             pengujis: selectUji,
             nilai_fit_propers: nilaiFitProper,
             status: 0,
+            status_edit: 1
         };
 
         axios
@@ -61,6 +70,11 @@ export default function PendaftaranFitProper() {
                     jabatan: 0,
                     endurance: 0
                 });
+                setInfoProyeksi({
+                grade: "",
+                jabatan: "",
+                jenjang: "",
+                unit: ""})
                 setNilaiFitProper([]);
                 setOnDisable(!onDisable);
             })
@@ -239,13 +253,33 @@ export default function PendaftaranFitProper() {
             }
         }
     };
+    const getProyeksi = () => {
+        let arrProyeksi = [];
+        let tempProyeksi = {};
+        axios.get(`http://localhost:1337/api/proyeksis?populate=*`)
+            .then((res) => {
+                console.log("getProyeksi", res.data.data);
+                res.data.data.map((P, index) => {
+                    tempProyeksi = {
+                        nama: P.attributes.jabatan.data.attributes.nama_jabatan,
+                        id: P.id,
+                        grade: P.attributes.grade.data.attributes.kode_grade,
+                        jenjang: P.attributes.jenjang.data.attributes.nama_jenjang,
+                        unit: P.attributes.unit.data.attributes.nama_unit
+                    }
+                    arrProyeksi.push(tempProyeksi);
+                })
+                console.log("arrProyeksi", arrProyeksi);
+                setListProyeksi(arrProyeksi);
+            })
+    }
 
     useEffect(() => {
         // console.log("============================");
         // console.log("data diri: ", dataDiri);
         // console.log("penguji: ", selectUji);
         // console.log("nilai", nilai);
-        // console.log("nilai fit proper", nilaiFitProper);
+        // console.log("nilai list proyeksi", listProyeksi);
         makeNilaiAtributtes();
 
         if (selectJenjang.length === 0) {
@@ -253,6 +287,9 @@ export default function PendaftaranFitProper() {
         }
         if (penguji.length === 0) {
             getPenguji();
+        }
+        if (listProyeksi.length === 0) {
+            getProyeksi();
         }
     });
 
@@ -316,25 +353,78 @@ export default function PendaftaranFitProper() {
                                             <input type="text" class="form-control" placeholder="Grade..." value={dataDiri.grade} disabled />
                                         </div>
                                     </div>
+                                    <div class="row mb-3">
+                                        <label class="form-label col-sm-3 col-form-label">Jadwal</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" type="datetime-local" onChange={(e) => setDataDiri({ ...dataDiri, date: e.target.value })} disabled={onDisable} />
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="form-label col-sm-3 col-form-label">Jenis</label>
+                                        <div class="col-sm-8">
+                                            <select className="form-control" aria-label="Default select example" onChange={(e) => setDataDiri({ ...dataDiri, jenis: e.target.value })} disabled={onDisable} >
+                                                <option>Select Jenis Fit Proper</option>
+                                                <option value="1">Regular</option>
+                                                <option value="2">Vcon</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="col-6 mt-3">
                                     <div class="row mb-3">
                                         <label class="form-label col-sm-3 col-form-label">Proyeksi</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Proyeksi..." value={dataDiri.proyeksi.length === 0 ? "" : dataDiri.proyeksi} onChange={(e) => setDataDiri({ ...dataDiri, proyeksi: e.target.value })} disabled={onDisable} />
+                                            {/* <input type="text" class="form-control" placeholder="Proyeksi..." value={dataDiri.proyeksi.length === 0 ? "" : dataDiri.proyeksi} onChange={(e) => setDataDiri({ ...dataDiri, proyeksi: e.target.value })} disabled={onDisable} /> */}
+                                            <select className="form-control" aria-label="Default select example"
+                                                onChange={(e) => {
+                                                    setDataDiri({ ...dataDiri, proyeksi: listProyeksi[e.target.value].id });
+                                                    setInfoProyeksi({ ...infoProyeksi, grade: listProyeksi[e.target.value].grade, jabatan: listProyeksi[e.target.value].nama, jenjang: listProyeksi[e.target.value].jenjang, unit: listProyeksi[e.target.value].unit })
+                                                }
+                                                }
+                                                disabled={onDisable}>
+                                                <option>Select Proyeksi</option>
+                                                {listProyeksi.map((sel, index) => (
+                                                    <option value={index} data-index={index}>
+                                                        {sel.nama}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    {/* Proyeksi */}
+                                    <div class="row mb-3">
+                                        <label class="form-label col-sm-4 col-form-label">Grade Proyeksi</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="..." value={infoProyeksi.grade} disabled />
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label class="form-label col-sm-3 col-form-label">Jadwal</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="datetime-local" value={dataDiri.date.length === 0 ? "" : dataDiri.date} onChange={(e) => setDataDiri({ ...dataDiri, date: e.target.value })} disabled={onDisable} />
+                                        <label class="form-label col-sm-4 col-form-label">Jabatan Proyeksi</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="..." value={infoProyeksi.jabatan} disabled />
                                         </div>
                                     </div>
                                     <div class="row mb-3">
+                                        <label class="form-label col-sm-4 col-form-label">Jenjang Proyeksi</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="..." value={infoProyeksi.jenjang} disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="form-label col-sm-4 col-form-label">Unit Proyeksi</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="..." value={infoProyeksi.unit} disabled />
+                                        </div>
+                                    </div>
+                                    {/* akhir Proyeksi */}
+                                    <hr></hr>
+                                    
+                                    {/* <div class="row mb-3">
                                         <label class="form-label col-sm-3 col-form-label">Jenjang Jabatan</label>
                                         <div class="col-sm-9">
-                                            <select className="form-control" aria-label="Default select example" value={dataDiri.jenjang.length === 0 ? "" : dataDiri.jenjang} onChange={(e) => setDataDiri({ ...dataDiri, jenjang: selectJenjang[e.target.value].attributes.nama_jenjang })} disabled={onDisable}>
+                                            <select className="form-control" aria-label="Default select example" onChange={(e) => setDataDiri({ ...dataDiri, jenjang: selectJenjang[e.target.value].attributes.nama_jenjang })} disabled={onDisable}>
                                                 <option>Select Jenjang</option>
                                                 {selectJenjang.map((sel, index) => (
                                                     <option value={index} data-index={index}>
@@ -343,17 +433,8 @@ export default function PendaftaranFitProper() {
                                                 ))}
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label class="form-label col-sm-3 col-form-label">Jenis</label>
-                                        <div class="col-sm-9">
-                                            <select className="form-control" aria-label="Default select example" value={dataDiri.jenis.length === 0 ? "" : dataDiri.jenis} onChange={(e) => setDataDiri({ ...dataDiri, jenis: e.target.value })} disabled={onDisable} >
-                                                <option>Select Jenis Fit Proper</option>
-                                                <option value="1">Regular</option>
-                                                <option value="2">Vcon</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    </div> */}
+                                    
                                     <div class="row mb-3">
                                         <label class="form-label col-sm-3 col-form-label">Penguji</label>
                                         <div class="col-sm-9">

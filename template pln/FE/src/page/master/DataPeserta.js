@@ -18,7 +18,7 @@ export default function DataPeserta() {
 
     const getDataPegawai = () => {
         axios
-            .get('http://localhost:1337/api/pesertas?populate=pegawai.jabatan&populate=pegawai.jenjang&populate=pegawai.grade&populate=fit_proper&populate=wawancara')
+            .get('http://localhost:1337/api/pesertas?populate=*')
             .then((res) => {
                 console.log(res.data);
                 setDataPegawai(res.data.data);
@@ -91,16 +91,16 @@ export default function DataPeserta() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dataPegawai.map((data, index,E) => {
-                                            console.log("E",E);
+                                        {dataPegawai.map((data, index) => {
+                                            // console.log("data looping",data);
                                             if (data.attributes.fit_proper.data === null || (data.attributes.fit_proper.data !== null ? data.attributes.fit_proper.data.attributes.status : 1) < 1) {
                                                 return (
                                                     <tr key={index}>
                                                         <td>{data.attributes.pegawai.data.attributes.nama_pegawai}</td>
                                                         <td>{data.attributes.pegawai.data.attributes.nip}</td>
-                                                        <td>{data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</td>
-                                                        <td>{data.attributes.pegawai.data.attributes.grade.data.attributes.kode_grade}</td>
-                                                        <td>{data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</td>
+                                                        <td>{data.attributes.jabatan.data.attributes.nama_jabatan}</td>
+                                                        <td>{data.attributes.grade.data.attributes.kode_grade}</td>
+                                                        <td>{data.attributes.jenjang.data.attributes.nama_jenjang}</td>
                                                         {data.attributes.fit_proper.data !== null ?
                                                             (data.attributes.fit_proper.data.attributes.status < 1 ?
                                                                 <td>Masa ujian Fit Proper</td> :

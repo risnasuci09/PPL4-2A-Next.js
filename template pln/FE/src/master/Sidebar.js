@@ -85,7 +85,7 @@ export default function Sidebar(props) {
                   <i className="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul className="nav nav-treeview">
+              <ul className="nav nav-treeview ml-4">
                 <li className="nav-item">
                   <NavLink
                     to="/master/dataPeserta"
@@ -110,7 +110,7 @@ export default function Sidebar(props) {
             </li>
             {/* ================================ */}
             <li
-              className={ openNavItem.master? "nav-item menu-open" : "nav-item"}
+              className={ openNavItem.fitproper? "nav-item menu-open" : "nav-item"}
               onClick={() => processingNavActive("fitproper")}
             >
               <a
@@ -123,7 +123,7 @@ export default function Sidebar(props) {
                   <i className="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul className="nav nav-treeview">
+              <ul className="nav nav-treeview ml-4">
                 <li className="nav-item">
                   <NavLink
                     to="/fit-proper/pendaftaran"
@@ -168,7 +168,7 @@ export default function Sidebar(props) {
             </li>
             {/* =============== */}
             <li
-              className={ openNavItem.master? "nav-item menu-open" : "nav-item"}
+              className={ openNavItem.report? "nav-item menu-open" : "nav-item"}
               onClick={() => processingNavActive("report")}
             >
               <a
@@ -181,7 +181,7 @@ export default function Sidebar(props) {
                   <i className="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul className="nav nav-treeview">
+              <ul className="nav nav-treeview ml-4">
                 <li className="nav-item">
                   <NavLink
                     to="/reports/hasil-fit-proper"

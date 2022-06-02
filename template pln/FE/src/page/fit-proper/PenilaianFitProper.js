@@ -24,7 +24,7 @@ export default function PenilaianFitProper() {
         console.log(value);
         axios
             .get(
-                `http://localhost:1337/api/fit-propers?populate=peserta.pegawai.jabatan&filters[jadwal][$gte]=${value}&filters[jadwal][$lte]=${newDate(value)}&populate=nilai_fit_propers.penguji.pegawai`
+                `http://localhost:1337/api/fit-propers?populate=peserta.pegawai&populate=peserta.jabatan&filters[jadwal][$gte]=${value}&filters[jadwal][$lte]=${newDate(value)}&populate=nilai_fit_propers.penguji.pegawai&populate=proyeksi.jabatan&filters[status_edit][$ne]=false`
             )
             .then((res) => {
                 console.log("success filter", res.data.data);
@@ -57,7 +57,7 @@ export default function PenilaianFitProper() {
         let today = new Date();
         axios
             .get(
-                `http://localhost:1337/api/fit-propers?populate=peserta.pegawai.jabatan&filters[jadwal][$gte]=${newDate(today.getFullYear() + '-' + (today.getMonth()))}&filters[jadwal][$lte]=${newDate(today.getFullYear() + '-' + (today.getMonth() + 1))}&populate=nilai_fit_propers.penguji.pegawai`
+                `http://localhost:1337/api/fit-propers?populate=peserta.pegawai&filters[jadwal][$gte]=${newDate(today.getFullYear() + '-' + (today.getMonth()))}&filters[jadwal][$lte]=${newDate(today.getFullYear() + '-' + (today.getMonth() + 1))}&populate=nilai_fit_propers.penguji.pegawai&populate=peserta.jabatan&populate=proyeksi.jabatan&filters[status_edit][$ne]=false`
             )
             .then((res) => {
                 console.log("success get", res);
@@ -151,8 +151,8 @@ export default function PenilaianFitProper() {
                                                     <td>{index + 1}</td>
                                                     <td>{res.attributes.peserta.data.attributes.pegawai.data.attributes.nama_pegawai}</td>
                                                     <td>{res.attributes.peserta.data.attributes.pegawai.data.attributes.nip}</td>
-                                                    <td>{res.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</td>
-                                                    <td>{res.attributes.proyeksi_jabatan_fit_proper}</td>
+                                                    <td>{res.attributes.peserta.data.attributes.jabatan.data.attributes.nama_jabatan}</td>
+                                                    <td>{res.attributes.proyeksi.data.attributes.jabatan.data.attributes.nama_jabatan}</td>
                                                     <td>{formatDate(res.attributes.jadwal)}</td>
                                                     <td>
                                                         <DropdownButton title={<i class="fas fa-user-alt"></i>} className='drop'>
