@@ -47,6 +47,10 @@
       "min": 0,
       "required": false,
       "type": "integer"
+    },
+    "status_edit": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
