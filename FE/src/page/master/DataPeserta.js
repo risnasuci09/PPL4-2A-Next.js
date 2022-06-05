@@ -93,7 +93,7 @@ export default function DataPeserta() {
                                     <tbody>
                                         {dataPegawai.map((data, index) => {
                                             // console.log("data looping",data);
-                                            if (data.attributes.fit_proper.data === null || (data.attributes.fit_proper.data !== null ? data.attributes.fit_proper.data.attributes.status : 1) < 1) {
+                                            if (data.attributes.fit_proper.data === null || ((data.attributes.fit_proper.data !== null ? data.attributes.fit_proper.data.attributes.status : 1) < 1) && (data.attributes.fit_proper.data !== null?data.attributes.fit_proper.data.attributes.status_edit?true:false:false))  {
                                                 return (
                                                     <tr key={index}>
                                                         <td>{data.attributes.pegawai.data.attributes.nama_pegawai}</td>

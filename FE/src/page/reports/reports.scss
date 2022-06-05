@@ -18,6 +18,38 @@
   
     height: 8.7in;
   }
+
+  .table-pdf{
+    width: 50%;
+    font-size: x-small;
+  }
+
+  .kop{
+    font-size: 75%;
+  }
+  .kop-image{
+    width: 50%;
+    height: 100%;
+  }
+  .bumn{
+    width: 80%;
+    margin-top: 25%;
+  }
+
+  .line{
+    height:2px;
+    border-top:1px solid black;
+    border-bottom:2px solid black;
+  }
+
+  .text{
+    font-family: 'Times New Roman';
+    // font-size: 90%;
+  }
+
+  .ttd{
+    font-size: medium;
+  }
   
   /*
   The example loads the DejaVu Sans from the Kendo UI CDN.

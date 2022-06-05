@@ -9,15 +9,6 @@ import swal from "sweetalert";
 import "./reports.scss";
 
 export default function CetakNilaiFitProper() {
-    // const pdfExportComponent = useRef(null);
-    // const [layoutSelection, setLayoutSelection] = useState({
-    //     text: "A4",
-    //     value: "size-a4"
-    // });
-    // const handleExportWithComponent = event => {
-    //     pdfExportComponent.current.save();
-    // };
-
     const [dataProyeksi, setDataProyeksi] = useState([]);
 
     const getDataProyeksi = () => {
@@ -92,20 +83,7 @@ export default function CetakNilaiFitProper() {
                     </div>
                 </div>
             </div>
-            {/* <Button primary={true} onClick={handleExportWithComponent}>
-                Export
-            </Button>
-            <div className="page-container hidden-on-narrow">
-                <PDFExport ref={pdfExportComponent}>
-                    <div className="pdf-page size-a4">
-                        <div className='row' >
-                            <div className='col-sm-12' >
-                                test
-                            </div>
-                        </div>
-                    </div>
-                </PDFExport>
-            </div> */}
+            
         </>
     )
 }
