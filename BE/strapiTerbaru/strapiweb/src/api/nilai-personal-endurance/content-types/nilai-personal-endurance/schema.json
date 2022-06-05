@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nilai_personal_endurances",
+  "info": {
+    "singularName": "nilai-personal-endurance",
+    "pluralName": "nilai-personal-endurances",
+    "displayName": "nilai_personal_endurance",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "total_nilai_personal_endurance": {
+      "type": "decimal"
+    },
+    "internal_readiness": {
+      "type": "integer"
+    },
+    "eksternal_readiness": {
+      "type": "integer"
+    },
+    "nilai_fit_proper": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nilai-fit-proper.nilai-fit-proper",
+      "mappedBy": "nilai_personal_endurance"
+    }
+  }
+}
