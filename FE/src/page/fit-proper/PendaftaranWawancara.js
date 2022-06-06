@@ -33,7 +33,7 @@ export default function PendaftaranWawancara() {
 
                 while (count < res.data.data.length) {
                     if (res.data.data[count].attributes.pegawai.data != null) {
-                        if (res.data.data[count].attributes.wawancara.data === null) {
+                        if (res.data.data[count].attributes.wawancara.data === null && res.data.data[count].attributes.fit_proper.data !== null ? res.data.data[count].attributes.fit_proper.data.attributes.status_edit ? false : true : false) {
                             setDataDiri({
                                 ...dataDiri,
                                 nama: res.data.data[count].attributes.pegawai.data.attributes.nama_pegawai,
@@ -45,10 +45,7 @@ export default function PendaftaranWawancara() {
                             setOnDisable(false);
                             find = 1;
                         } else {
-                            if (
-                                res.data.data[count].attributes.wawancara.data.attributes
-                                    .status > 0
-                            ) {
+                            if (res.data.data[count].attributes.wawancara.data.attributes.status > 0) {
                             } else {
                                 setDataDiri({
                                     nip: "",
@@ -263,7 +260,7 @@ export default function PendaftaranWawancara() {
                                 <div class="row mb-3">
                                     <label class="form-label col-sm-3 col-form-label">Jenjang Jabatan</label>
                                     <div class="col-sm-9">
-                                        <select className="form-control" aria-label="Default select example"  onChange={(e) => setDataDiri({ ...dataDiri, jenjang: selectJenjang[e.target.value].attributes.nama_jenjang })} disabled={onDisable} >
+                                        <select className="form-control" aria-label="Default select example" onChange={(e) => setDataDiri({ ...dataDiri, jenjang: selectJenjang[e.target.value].attributes.nama_jenjang })} disabled={onDisable} >
                                             <option>Select Jenjang</option>
                                             {selectJenjang.map((sel, index) => (
                                                 <option value={index} data-index={index}>

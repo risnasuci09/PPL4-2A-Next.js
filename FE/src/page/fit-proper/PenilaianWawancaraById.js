@@ -12,7 +12,8 @@ export default function PenilaianWawancaraById() {
         nama: "",
         nip: "",
         idnilai: ""
-    })
+    });
+    const [statusNilai,setStatusNilai] = useState("");
 
     const getDataWawancara = () => {
         axios
@@ -55,9 +56,29 @@ export default function PenilaianWawancaraById() {
             });
     }
 
+    const changeStatusEdit = () => {
+        const data = {
+            status_edit: 0
+        }
+        axios.put(`http://localhost:1337/api/wawancaras/${id}`, { data })
+            .then((res) => {
+                console.log("berhasil change status edit!!");
+                setStatusNilai("final");
+            })
+            .catch((err) => {
+                console.log("gagal change status edit");
+            });
+    }
+
     useEffect(() => {
         if (dataWawancara.nama.length === 0) {
             getDataWawancara();
+        }
+        if(statusNilai === "final"){
+            swal("Kamu Berhasil Menilai Peserta Ini!",{icon: "success"})
+                .then((value) => {
+                    window.history.back();
+                });
         }
         console.log("isi data wawancara", dataWawancara);
     })
@@ -80,8 +101,9 @@ export default function PenilaianWawancaraById() {
             <div className='col-12'>
                 <div className="card p-2">
                     <div className="card-header">
-                        <div>
-                            <h5 className="">Tabel Penilaian</h5>
+                        <div className='row'>
+                            <h5 className="col-10">Tabel Penilaian Wawancara</h5>
+                            <button className='col-2 btn bg-danger' onClick={changeStatusEdit}>Final</button>
                         </div>
                         <div>
                             <p className='card-subtitle'>Nama &emsp;: {dataWawancara.nama} <br />

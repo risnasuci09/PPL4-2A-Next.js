@@ -23,6 +23,8 @@ import AddPenguji from './page/master/AddPenguji';
 import HasilNilaiFitProper from './page/reports/HasilNilaiFitProper';
 import CetakNilaiFitProper from './page/reports/CetakNilaiFitProper';
 import CetakFitProperById from './page/reports/CetakFitProperById';
+import HasilNilaiWawancara from './page/reports/HasilNilaiWawancara';
+import CetakWawancaraById from './page/reports/CetakWawancaraById';
 
 function App() {
 	return (
@@ -34,6 +36,7 @@ function App() {
 					<div className="content-header">
 						<div className="container-fluid">
 							<Routes>
+								<Route path='/' element={<Dashboard />} />
 								<Route path='/dashboard' element={<Dashboard />} />
 								<Route path='/master/dataPeserta' element={<DataPeserta />} />
 								<Route path='/master/dataPeserta/add' element={<AddPeserta />} />
@@ -45,10 +48,11 @@ function App() {
 								<Route path='/wawancara/penilaian' element={<PenilaianWawancara />} />
 								<Route path='/wawancara/penilaian/:id' element={<PenilaianWawancaraById />} />
 								<Route path='/fit-proper/penilaian/:id' element={<PenilaianFitProperById />} />
-								<Route path='/reports/hasil-nilai-fit-proper' element={<HasilNilaiFitProper/>}/>
-								<Route path='/reports/cetak-nilai-fit-proper' element={<CetakNilaiFitProper/>}/>
-								<Route path='/reports/cetak-nilai-fit-proper/export/:id' element={<CetakFitProperById/>}/>
-
+								<Route path='/reports/hasil-nilai-fit-proper' element={<HasilNilaiFitProper />} />
+								<Route path='/reports/cetak-nilai-fit-proper' element={<CetakNilaiFitProper />} />
+								<Route path='/reports/cetak-nilai-fit-proper/export/:id' element={<CetakFitProperById />} />
+								<Route path='/reports/hasil-nilai-wawancara' element={<HasilNilaiWawancara />} />
+								<Route path='/reports/cetak-nilai-wawancara/export/:id' element={<CetakWawancaraById />} />
 							</Routes>
 						</div>
 					</div>

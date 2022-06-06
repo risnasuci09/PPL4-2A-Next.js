@@ -202,36 +202,16 @@ export default function Sidebar(props) {
                     <p>Cetak Nilai Fit & Proper</p>
                   </NavLink>
                 </li>
-                {/* <li className="nav-item">
-                  <NavLink
-                    to="/#"
-                    className={({ isActive }) =>
-                      isActive ? "nav-link active" : "nav-link"
-                    }
-                  >
-                    <p>Cetak Nilai Fit & Proper</p>
-                  </NavLink>
-                </li>
                 <li className="nav-item">
                   <NavLink
-                    to="/#"
+                    to="/reports/hasil-nilai-wawancara"
                     className={({ isActive }) =>
                       isActive ? "nav-link active" : "nav-link"
                     }
                   >
-                    <p>Rekap Nilai Wawancara</p>
+                    <p>Hasil Nilai Wawancara</p>
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    to="/#"
-                    className={({ isActive }) =>
-                      isActive ? "nav-link active" : "nav-link"
-                    }
-                  >
-                    <p>Cetak Nilai Wawancara</p>
-                  </NavLink>
-                </li> */}
                 
               </ul>
             </li>

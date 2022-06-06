@@ -19,31 +19,38 @@ export default function AddPeserta() {
     })
     const getDataButton = (value) => {
         console.log("entry");
-        let status = 1;
+        let status = [];
         axios
             .get(`http://localhost:1337/api/pegawais?filters[nip][$eq]=${value}&populate=jabatan&populate=grade&populate=pesertas.fit_proper&populate=jenjang&populate=unit`)
             .then((res) => {
                 if (res.data.data.length !== 0) {
                     console.log(res.data);
                     res.data.data[0].attributes.pesertas.data.map((temp) => {
+                        console.log("status",temp.id);
                         if (temp.attributes.fit_proper.data !== null) {
                             if (temp.attributes.fit_proper.data.attributes.status < 1) {
                                 console.log("test 1");
-                                status = 0;
+                                status.push(0);
                             } else {
-                                if(temp.attributes.fit_proper.data.attributes.status_edit){
-                                    status = 1;
-                                    console.log("test 2");
+                                if(!temp.attributes.fit_proper.data.attributes.status_edit){
+                                    status.push(1);
+                                    console.log("test 2",temp.attributes.fit_proper.data.attributes.status_edit);
                                 }else{
-                                    status = 0;
+                                    status.push(0);
                                 }
                             }
                         } else {
-                            status = 0;
+                            status.push(0);
                             console.log("test 3");
                         }
+                    });
+                    let tempStatus = 1;
+                    status.forEach((P)=>{
+                        if(P===0){
+                            tempStatus = 0;
+                        }
                     })
-                    console.log(status);
+                    // console.log(status);
                     setDataDiri({
                         ...dataDiri,
                         nip: res.data.data[0].attributes.nip,
@@ -51,11 +58,11 @@ export default function AddPeserta() {
                         jabatan: res.data.data[0].attributes.jabatan.data.attributes.nama_jabatan,
                         grade: res.data.data[0].attributes.grade.data.attributes.kode_grade,
                         id: res.data.data[0].id,
-                        status: status,
+                        status: tempStatus,
                         idgrade: res.data.data[0].attributes.grade.data.id,
                         idjabatan: res.data.data[0].attributes.jabatan.data.id,
                         idjenjang: res.data.data[0].attributes.jenjang.data.id,
-                        idunit: res.data.data[0].attributes.unit.data.id,
+                        idunit: res.data.data[0].attributes.unit.data.id
                     })
                     setOnDisable(false);
                     swal("Berhasil", "berhasil ditemukan.", "success");

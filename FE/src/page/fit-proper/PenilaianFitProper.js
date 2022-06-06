@@ -167,7 +167,7 @@ export default function PenilaianFitProper() {
                                                     <td>
                                                         <div className="btn-group">
                                                             <a className="btn bg-warning btn-xs" href={"penilaian/" + res.id}>
-                                                                <button type="button" className="btn bg-warning btn-xs" title="Hapus">
+                                                                <button type="button" className="btn bg-warning btn-xs" title="Edit">
                                                                     <i className="far fa-edit"></i>
                                                                 </button>
                                                             </a>

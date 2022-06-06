@@ -71,10 +71,11 @@ export default function PendaftaranFitProper() {
                     endurance: 0
                 });
                 setInfoProyeksi({
-                grade: "",
-                jabatan: "",
-                jenjang: "",
-                unit: ""})
+                    grade: "",
+                    jabatan: "",
+                    jenjang: "",
+                    unit: ""
+                })
                 setNilaiFitProper([]);
                 setOnDisable(!onDisable);
             })
@@ -164,10 +165,12 @@ export default function PendaftaranFitProper() {
                             setOnDisable(!onDisable);
                             find = 1;
                         } else {
-                            if (
-                                res.data.data[count].attributes.fit_proper.data.attributes
-                                    .status > 0
-                            ) {
+                            if (res.data.data[count].attributes.fit_proper.data.attributes.status > 0) {
+                                if(res.data.data[count].attributes.fit_proper.data.attributes.status_edit){
+                                    find = 1;
+                                    swal("Warning!", "pegawai belum melakukan final", "warning");
+                                    break;
+                                }
                             } else {
                                 setDataDiri({
                                     nip: "",
@@ -420,7 +423,7 @@ export default function PendaftaranFitProper() {
                                     </div>
                                     {/* akhir Proyeksi */}
                                     <hr></hr>
-                                    
+
                                     {/* <div class="row mb-3">
                                         <label class="form-label col-sm-3 col-form-label">Jenjang Jabatan</label>
                                         <div class="col-sm-9">
@@ -434,7 +437,7 @@ export default function PendaftaranFitProper() {
                                             </select>
                                         </div>
                                     </div> */}
-                                    
+
                                     <div class="row mb-3">
                                         <label class="form-label col-sm-3 col-form-label">Penguji</label>
                                         <div class="col-sm-9">

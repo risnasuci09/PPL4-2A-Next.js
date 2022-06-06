@@ -107,6 +107,7 @@ export default function HasilNilaiFitProper() {
       <div className="col-sm-6">
         <ol className="breadcrumb float-sm-right">
           <li className="breadcrumb-item"><a href="#">Reports</a></li>
+          <li className="breadcrumb-item"><a href="#">Fit Proper</a></li>
           <li className="breadcrumb-item active">Hasil</li>
         </ol>
       </div>

@@ -16,7 +16,7 @@ export default function DataPeserta() {
         status: false
     });
 
-    const getDataPegawai = () => {
+    const getDataPeserta = () => {
         axios
             .get('http://localhost:1337/api/pesertas?populate=*')
             .then((res) => {
@@ -24,7 +24,7 @@ export default function DataPeserta() {
                 setDataPegawai(res.data.data);
             })
             .catch((err) => {
-                console.log("err getDataPegawai", err);
+                console.log("err getDataPeserta", err);
             })
     }
 
@@ -38,17 +38,14 @@ export default function DataPeserta() {
                     id: "",
                     status: false
                 })
-                getDataPegawai();
+                getDataPeserta();
             })
     }
 
     useEffect(() => {
         console.log("show", show);
         if (dataPegawai.length === 0) {
-            // Api.getDataPegawai().then((response) => {
-            //     setDataPegawai(response.data.data);
-            // });
-            getDataPegawai();
+            getDataPeserta();
         }
         $(document).ready(function () {
             setTimeout(function () {
@@ -92,8 +89,10 @@ export default function DataPeserta() {
                                     </thead>
                                     <tbody>
                                         {dataPegawai.map((data, index) => {
-                                            // console.log("data looping",data);
-                                            if (data.attributes.fit_proper.data === null || ((data.attributes.fit_proper.data !== null ? data.attributes.fit_proper.data.attributes.status : 1) < 1) && (data.attributes.fit_proper.data !== null?data.attributes.fit_proper.data.attributes.status_edit?true:false:false))  {
+                                            console.log("data looping"+index,(data.attributes.fit_proper.data !== null?data.attributes.fit_proper.data.attributes.status_edit?true:false:false));
+                                            console.log(data);
+                                            if (data.attributes.fit_proper.data === null || (data.attributes.fit_proper.data !== null?data.attributes.fit_proper.data.attributes.status_edit?true:false:false))  {
+                                                console.log("masuk"+index);
                                                 return (
                                                     <tr key={index}>
                                                         <td>{data.attributes.pegawai.data.attributes.nama_pegawai}</td>
@@ -103,10 +102,12 @@ export default function DataPeserta() {
                                                         <td>{data.attributes.jenjang.data.attributes.nama_jenjang}</td>
                                                         {data.attributes.fit_proper.data !== null ?
                                                             (data.attributes.fit_proper.data.attributes.status < 1 ?
-                                                                <td>Masa ujian Fit Proper</td> :
+                                                                <td className="badge bg-warning text-center"><span className="ml-2 mr-1">Masa ujian Fit Proper</span></td> :
+                                                                data.attributes.fit_proper.data.attributes.status_edit?
+                                                                <td className="badge bg-danger text-center">Belum melakukan final</td>:
                                                                 <td>Selesai Masa Ujian</td>
                                                             ) :
-                                                            <td>Belum daftar Fit Proper</td>
+                                                            <td className="badge bg-success text-center">Belum daftar Fit Proper</td>
                                                         }
                                                         <td>
                                                             <div className="btn-group">

@@ -61,8 +61,15 @@ export default function PenilaianWawancara() {
                 `http://localhost:1337/api/wawancaras?populate=peserta.pegawai.jabatan&filters[jadwal_wawancara][$gte]=${newDate(today.getFullYear() + '-' + (today.getMonth()))}&filters[jadwal_wawancara][$lte]=${newDate(today.getFullYear() + '-' + (today.getMonth() + 1))}&populate=nilai_wawancara&populate=pengujis.pegawai`
             )
             .then((res) => {
+                let temp = [];
                 console.log("success get", res);
-                setDataPeserta(res.data.data);
+                res.data.data.forEach(val => {
+                    if(val.attributes.status_edit){
+                        temp.push(val);
+                    }
+                });
+                // console.log("temp",temp);
+                setDataPeserta(temp);
                 //   successNotify();
             })
             .catch((err) => {
